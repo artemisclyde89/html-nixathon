@@ -6,8 +6,9 @@ A simple, beautiful event receiver and dashboard that accepts **ANY JSON data** 
 
 1. **Start the server:**
    ```bash
-   node index.js
+   npm run dev
    ```
+   *(Uses nodemon to automatically restart on changes)*
 
 2. **Open the dashboard:**
    Open `http://localhost:8000` in your browser
@@ -24,13 +25,13 @@ A simple, beautiful event receiver and dashboard that accepts **ANY JSON data** 
 ### Backend (`index.js`)
 - **POST `/api/events`** - Accepts ANY JSON payload
 - **GET `/api/events`** - Returns recent events (last 100)
-- **GET `/healthz`** - Health check endpoint
+- **GET `/api/events/stream`** - Real-time SSE (Server-Sent Events) endpoint
 
 ### Frontend (`public/`)
-- Automatically polls the backend every 2 seconds
+- Uses **Server-Sent Events (SSE)** for instant, real-time updates (no polling)
 - Displays all received events in real-time
 - Shows events in a beautiful, readable format
-- Persists across page refreshes (stored in memory on server)
+- **Persists history** in your browser's local storage automatically
 
 ## 💡 Usage Examples
 
@@ -65,25 +66,28 @@ curl -X POST http://localhost:8000/api/events \
 ## 🎨 Features
 
 - ✅ **Generic** - Accepts any JSON structure
-- ✅ **Real-time** - Auto-updates every 2 seconds
+- ✅ **Real-time** - Uses Server-Sent Events (SSE) for instant pushes
 - ✅ **Beautiful UI** - Modern, dark theme with animations
 - ✅ **Easy to understand** - Clear display of all received data
-- ✅ **Configurable** - Change backend URL from the UI
-- ✅ **Persistent** - Events stored in memory (last 100)
+- ✅ **Configurable** - Change backend URL from the UI or `.env`
+- ✅ **Persistent** - History is saved in your browser's local storage (survives restarts)
 
 ## 🔧 Configuration
 
-### Change Backend URL
-You can change the backend URL directly from the dashboard UI:
+### Change Backend Configuration
+The app now uses a `.env` file for backend configuration:
+1. Copy the values from `.env` (or create a new one)
+2. Set `PORT` for the server port
+3. Set `EXTERNAL_API_URL` to define where events are forwarded
+
+### UI Backend URL
+You can also change the backend URL directly from the dashboard:
 1. Enter the new URL in the input field
 2. Click "Set"
-3. The dashboard will reconnect automatically
+3. The dashboard remembers this setting in LocalStorage. If the frontend is on the same host as the backend, it will auto-detect the URL.
 
-### Adjust Polling Interval
-Edit `public/app.js`:
-```javascript
-const POLLING_INTERVAL = 2000; // milliseconds
-```
+### Real-time Streaming
+The app uses SSE. If you change the backend location in the UI, the frontend will automatically close the old stream and open a new one to the new target.
 
 ### Change Event Limit
 Edit `index.js`:
@@ -94,12 +98,10 @@ const MAX_EVENTS = 100; // number of events to keep
 ## 📦 Deployment
 
 This app works on any platform:
-- **Local** - Just run `node index.js`
-- **Heroku** - Deploy as-is
-- **DigitalOcean** - Works on any VPS
-- **AWS/GCP/Azure** - Deploy to any cloud platform
+- **Local** - Run `npm run dev`
+- **PaaS (Heroku/Railway/Render)** - Deploy the repo; the server will auto-pick the `PORT` and the frontend will auto-detect the `API_URL`.
 
-**Note:** Events are stored in memory, so they will be lost on server restart. For production, consider adding a database.
+**Note:** While events are persisted in the browser's LocalStorage, the server-side memory list resets on restart. For long-term server-side storage, consider adding a database.
 
 ## 🛠️ Tech Stack
 
