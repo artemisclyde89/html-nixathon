@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Event Dashboard</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+</head>
+
+<body>
+    <div class="background-blobs">
+        <div class="blob blob-1"></div>
+        <div class="blob blob-2"></div>
+    </div>
+
+    <div class="container">
+        <header>
+            <div class="header-content">
+                <h1>Event Stream</h1>
+                <div class="status-indicator">
+                    <span class="dot"></span>
+                    <span id="connection-status">Live</span>
+                </div>
+            </div>
+            <div class="api-config">
+                <input type="text" id="api-url" placeholder="Backend URL" value="http://localhost:8000">
+                <button id="update-url-btn">Set</button>
+            </div>
+        </header>
+
+        <section class="json-input-section">
+            <h2>Send Event</h2>
+            <textarea id="json-input" placeholder='{"name": "Alice", "age": 25}'></textarea>
+            <div class="input-actions">
+                <button id="send-json-btn" class="send-btn">Send Event</button>
+                <span id="input-status" class="input-status"></span>
+            </div>
+        </section>
+
+        <main id="events-container">
+            <div class="empty-state">Waiting for events...</div>
+        </main>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+
+</html>
