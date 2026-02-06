@@ -21,4 +21,4 @@ jobs:
             cd /home/ubuntu/html-nixathon
             git pull origin main
             npm install
-            npm run dev'
+            npm run start'
