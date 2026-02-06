@@ -15,26 +15,35 @@ app.use(express.urlencoded({ extended: true }));
 app.use(express.text({ type: "*/*" }));
 app.use(express.static("public"));
 app.use((req, res, next) => {
-  let payload = {
-    body: req.body,
-    query: req.query
-  };
   const timestamp = new Date().toISOString();
+  const ip = req.ip || req.headers["x-forwarded-for"] || req.connection.remoteAddress;
 
   const newEvent = {
-    id: Date.now() + "-" + Math.random().toString(36).substr(2, 4),
+    id: Date.now() + "-" + Math.random().toString(36).slice(2, 4),
     type: "inbound",
-    url: `${req.method}: ${req.path}`,
-    data: payload,
-    timestamp: timestamp,
+    data: {
+      method: req.method,
+      path: req.originalUrl,
+      headers: req.headers,
+      query: req.query,
+      body: req.body,
+      ip: ip,
+      timestamp: timestamp
+    },
+    timestamp,
     receivedAt: new Date().toLocaleString(),
   };
 
   recentEvents.push(newEvent);
   if (recentEvents.length > MAX_EVENTS) recentEvents.shift();
 
-  broadcastEvent({ type: "new_event", event: newEvent });
-  return next();
+  // stop broadcasting SSE requests
+  const isSSE = req.path === "/api/events/stream";
+  if (!isSSE) {
+    broadcastEvent({ type: "new_event", event: newEvent });
+  }
+
+  next();
 });
 
 function broadcastEvent(event) {
