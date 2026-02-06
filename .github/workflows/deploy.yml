@@ -17,9 +17,9 @@ jobs:
           USER: ${{ secrets.EC2_USER }}
         run: |
           echo "$PRIVATE_KEY" > github-ec2.pem && chmod 600 github-ec2.pem
-          ssh -o StrictHostKeyChecking=no -i github-ec2.pem ${USER}@${HOST}
+          ssh -o StrictHostKeyChecking=no -i github-ec2.pem ${USER}@${HOST} '
             cd /home/ubuntu/html-nixathon
             git pull origin main
             # npm install
             # npm run build
-            # pm2 restart index.js
+            # pm2 restart index.js'
