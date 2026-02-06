@@ -43,7 +43,7 @@ function broadcastEvent(event) {
 }
 
 app.get("/healthz", (req, res) => {
-  res.status(200).json({ status: "updated" });
+  res.status(200).json({ status: "OK" });
 });
 
 app.get("/api/events", (req, res) => {
