@@ -1,10 +1,10 @@
+import { generateVisualizations } from './js/visualizers.js';
+import * as storage from './js/storage.js';
+
 const isLocalDev = window.location.port === '5503' || window.location.port === '5501' || window.location.port === '5500';
 let API_URL = isLocalDev ? 'http://localhost:8000' : window.location.origin;
-const POLLING_INTERVAL = 2000;
 
-let processedEventCount = 0;
-let eventSource = null;
-
+/* ... DOM Elements ... */
 const container = document.getElementById('events-container');
 const connectionStatus = document.getElementById('connection-status');
 const apiUrlInput = document.getElementById('api-url');
@@ -13,44 +13,21 @@ const jsonInput = document.getElementById('json-input');
 const sendJsonBtn = document.getElementById('send-json-btn');
 const inputStatus = document.getElementById('input-status');
 
-const LOCAL_STORAGE_KEY = 'event_dashboard_history';
+let processedEventCount = 0;
+let eventSource = null;
 
-loadLocalEvents();
-init();
-
-function loadLocalEvents() {
-    const saved = localStorage.getItem(LOCAL_STORAGE_KEY);
-    if (saved) {
-        try {
-            const events = JSON.parse(saved);
-            renderEvents(events, true); // true = initial load from local
-        } catch (e) {
-            console.error('Failed to load local history', e);
-        }
-    }
-}
-
-function saveEventLocally(event) {
-    let events = JSON.parse(localStorage.getItem(LOCAL_STORAGE_KEY) || '[]');
-
-    // Check for duplicates
-    if (events.some(e => e.id === event.id)) return;
-
-    events.push(event);
-
-    // Keep last 100
-    if (events.length > 100) events.shift();
-
-    localStorage.setItem(LOCAL_STORAGE_KEY, JSON.stringify(events));
-}
-
+// Initialize
 function init() {
+    loadLocalEvents();
+
+    // Restore API URL preference
     const savedUrl = localStorage.getItem('apiUrl');
     if (savedUrl) {
         API_URL = savedUrl;
         apiUrlInput.value = API_URL;
     }
 
+    // Event Listeners
     updateUrlBtn.addEventListener('click', updateApiUrl);
     sendJsonBtn.addEventListener('click', sendJsonEvent);
 
@@ -60,10 +37,17 @@ function init() {
         }
     });
 
+    // Start data flow
     fetchEvents();
     setupEventSource();
 }
 
+function loadLocalEvents() {
+    const events = storage.load();
+    if (events) {
+        renderEvents(events, true);
+    }
+}
 
 function setupEventSource() {
     if (eventSource) {
@@ -91,7 +75,6 @@ function setupEventSource() {
         console.error('Stream error:', err);
         updateStatus(false);
         eventSource.close();
-        // Try to reconnect after 5 seconds
         setTimeout(setupEventSource, 5000);
     };
 }
@@ -106,19 +89,10 @@ function handleStreamEvent(data) {
         const card = createEventCard(event);
         container.prepend(card);
         processedEventCount++;
-        saveEventLocally(event);
+        storage.saveEvent(event);
     } else if (type === 'status_update') {
         updateEventCardStatus(event);
-        updateEventInLocalHistory(event);
-    }
-}
-
-function updateEventInLocalHistory(updatedEvent) {
-    let events = JSON.parse(localStorage.getItem(LOCAL_STORAGE_KEY) || '[]');
-    const index = events.findIndex(e => e.id === updatedEvent.id);
-    if (index !== -1) {
-        events[index] = updatedEvent;
-        localStorage.setItem(LOCAL_STORAGE_KEY, JSON.stringify(events));
+        storage.updateEvent(event);
     }
 }
 
@@ -156,7 +130,7 @@ function updateApiUrl() {
         processedEventCount = 0;
         container.innerHTML = '<div class="empty-state">Connecting...</div>';
         fetchEvents();
-        setupEventSource(); // Reconnect to new URL
+        setupEventSource(); // Reconnect
     }
 }
 
@@ -183,8 +157,6 @@ async function sendJsonEvent() {
         });
 
         if (!response.ok) throw new Error('Failed to send event');
-
-        const result = await response.json();
 
         showInputStatus('✓ Event sent successfully!', 'success');
         jsonInput.value = '';
@@ -215,11 +187,9 @@ function showInputStatus(message, type) {
 async function fetchEvents() {
     try {
         const response = await fetch(`${API_URL}/api/events`);
-
         if (!response.ok) throw new Error('Network response was not ok');
 
         const events = await response.json();
-
         updateStatus(true);
         renderEvents(events);
 
@@ -260,7 +230,7 @@ function renderEvents(events, isLocalLoad = false) {
     events.forEach(event => {
         const card = createEventCard(event);
         container.prepend(card);
-        if (!isLocalLoad) saveEventLocally(event);
+        if (!isLocalLoad) storage.saveEvent(event);
     });
 
     processedEventCount = events.length;
@@ -275,7 +245,12 @@ function createEventCard(event) {
     const receivedAt = event.receivedAt || timestamp;
 
     const eventData = event.data || event;
-    const jsonContent = JSON.stringify(eventData, null, 2);
+    let jsonContent = JSON.stringify(eventData, null, 2);
+    jsonContent = jsonContent.replace(/\[\s*([\d\s,]+?)\s*\]/gs, (match, content) => {
+        const collapsed = content.replace(/\s+/g, ' ').trim();
+        const oneLine = `[ ${collapsed} ]`;
+        return oneLine.length < 120 ? oneLine : match;
+    });
 
     const typeBadge = `
         <span class="type-badge ${event.type || 'outbound'}">
@@ -298,17 +273,12 @@ function createEventCard(event) {
                 <span>Data</span>
             </div>
         </div>
+        ${generateVisualizations(eventData)}
         <div class="event-content">${jsonContent}</div>
     `;
 
     return div;
 }
 
-window.addEvent = function (eventData) {
-    const event = {
-        ...eventData,
-        timestamp: eventData.timestamp || new Date().toISOString()
-    };
-    saveEvent(event);
-    console.log('Event added to localStorage:', event);
-};
+// Start the app
+init();

@@ -1,0 +1,77 @@
+/* ... existing styles ... */
+
+.matrix-viz {
+    display: inline-flex;
+    flex-direction: column;
+    gap: 2px;
+    background: rgba(0, 0, 0, 0.3);
+    padding: 8px;
+    /* Increased padding */
+    border-radius: 6px;
+    margin-top: 5px;
+    border: 1px solid var(--card-border);
+    /* consistent border */
+}
+
+.matrix-row {
+    display: flex;
+    gap: 2px;
+}
+
+.matrix-cell {
+    width: 24px;
+    height: 24px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    /* removed default background */
+    color: #fff;
+    /* better contrast */
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.5);
+    /* readable on any color */
+    font-size: 0.7rem;
+    font-weight: 600;
+    border-radius: 2px;
+    transition: all 0.2s;
+    user-select: none;
+}
+
+.matrix-cell:hover {
+    filter: brightness(1.2);
+    /* simply brighten on hover */
+    transform: scale(1.2);
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+    z-index: 10;
+}
+
+.matrix-label {
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: var(--text-primary);
+    margin-bottom: 8px;
+    display: block;
+}
+
+.matrix-legend {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-bottom: 8px;
+    padding-bottom: 8px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.legend-item {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    font-size: 0.75rem;
+    color: var(--text-secondary);
+}
+
+.legend-dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 2px;
+    display: inline-block;
+}
