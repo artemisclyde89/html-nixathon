@@ -191,11 +191,18 @@ async function fetchEvents() {
 
         const events = await response.json();
         updateStatus(true);
-        renderEvents(events);
+
+        if (events && events.length > 0) {
+            events.forEach(event => storage.saveEvent(event));
+            loadLocalEvents();
+        } else {
+            loadLocalEvents();
+        }
 
     } catch (error) {
         console.error('Fetch error:', error);
         updateStatus(false);
+        loadLocalEvents();
     }
 }
 
@@ -230,7 +237,10 @@ function renderEvents(events, isLocalLoad = false) {
     events.forEach(event => {
         const card = createEventCard(event);
         container.prepend(card);
-        if (!isLocalLoad) storage.saveEvent(event);
+        // Only save to local storage if it's a new event from the stream, 
+        // NOT when we are just rendering the initial state from the server (which might be empty or partial)
+        // actually, we should probably NOT save here at all during bulk render.
+        // The stream handler handles individual saves.
     });
 
     processedEventCount = events.length;

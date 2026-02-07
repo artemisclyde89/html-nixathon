@@ -34,14 +34,15 @@ app.use((req, res, next) => {
     receivedAt: new Date().toLocaleString(),
   };
 
+  // Filter out SSE requests
+  if (req.path === "/api/events/stream") {
+    return next();
+  }
+
   recentEvents.push(newEvent);
   if (recentEvents.length > MAX_EVENTS) recentEvents.shift();
 
-  // stop broadcasting SSE requests
-  const isSSE = req.path === "/api/events/stream";
-  if (!isSSE) {
-    broadcastEvent({ type: "new_event", event: newEvent });
-  }
+  broadcastEvent({ type: "new_event", event: newEvent });
 
   next();
 });
