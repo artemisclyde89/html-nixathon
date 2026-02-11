@@ -47,7 +47,7 @@ function shouldUpgrade(level, resources, turn, isUnderAttack) {
 }
 function getGamePhase(turn, level) {
   if (level < 3) return "EARLY";
-  if (turn <= 18) return "MID";
+  if (level >= 3 && turn <= 18) return "MID";
   return "LATE";
 }
 function getBudgetAllocation(phase, turn, hp, armor) {
