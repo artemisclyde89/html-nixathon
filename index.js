@@ -34,9 +34,15 @@ function survivability(tower) {
 // ─── ECONOMY ENGINE ─────────────────────────────────────────
 function shouldUpgrade(level, resources, turn, isUnderAttack) {
   const cost = getUpgradeCost(level);
-  if (resources < cost) return false;
-  if (turn >= FATIGUE_START_TURN - 2) return false; // too late to benefit
-  return true
+  // Aggressive upgrade if safe
+  if (!isUnderAttack) {
+      return resources >= cost;
+  }
+  
+  // If under attack, only upgrade if we have significant surplus or ROI is amazing
+  if (resources > cost * 1.5) return true;
+
+  return false;
 }
 function getGamePhase(turn, level) {
   if (level < 3) return "EARLY";
@@ -45,26 +51,32 @@ function getGamePhase(turn, level) {
 }
 function getBudgetAllocation(phase, turn, hp, armor) {
   // Returns { offense, defense, savings } as fractions
-  if (hp + armor <= 40) {
-    // Emergency: heavy defense
-    return { offense: 0.0, defense: 1, savings: 0.0 };
+  const SAFE_ARMOR_THRESHOLD = 50;
+  
+  // Emergency: critical HP or low armor
+  if (hp <= 30 || armor < 10) {
+    return { offense: 0.0, defense: 0.9, savings: 0.1 };
   }
+
+  // If armor is not topped up, prioritize it heavily
+  if (armor < SAFE_ARMOR_THRESHOLD) {
+      if (phase === "EARLY") return { offense: 0.0, defense: 0.8, savings: 0.2 };
+      return { offense: 0.1, defense: 0.8, savings: 0.1 };
+  }
+
+  // If we are safe (high armor), focus on savings/upgrades
   switch (phase) {
     case "EARLY":
-      return { offense: 0, defense: 0.3, savings: 0.7 }; // save for upgrades
+      return { offense: 0.0, defense: 0.2, savings: 0.8 }; // save max for upgrades
     case "MID":
-      return { offense: 0.4, defense: 0.6, savings: 0.0 };
+      return { offense: 0.2, defense: 0.4, savings: 0.4 };
     case "LATE":
       if (turn >= FATIGUE_START_TURN) {
-        return { offense: 0.8, defense: 0.2, savings: 0.0 }; // all-in
+        return { offense: 0.4, defense: 0.6, savings: 0.0 }; // turtle up + some damage
       }
-      // Pre-fatigue: armor up
-      if (armor < 30) {
-        return { offense: 0.3, defense: 0.5, savings: 0 };
-      }
-      return { offense: 0.6, defense: 0.3, savings: 0.0 };
+      return { offense: 0.3, defense: 0.5, savings: 0.2 };
     default:
-      return { offense: 0.5, defense: 0.3, savings: 0.2 };
+      return { offense: 0.1, defense: 0.5, savings: 0.4 };
   }
 }
 // ─── TARGET SELECTION ───────────────────────────────────────
@@ -207,43 +219,65 @@ function combat(state) {
     }
   }
   const isUnderAttack = incomingDamage > 0;
-  // --- UPGRADE DECISION ---
+// --- ARMOR FIRST (ALWAYS TOP UP) ---
+  const SAFE_ARMOR_THRESHOLD = 50;
+  let desiredArmor = SAFE_ARMOR_THRESHOLD - playerTower.armor;
+  if (desiredArmor < 0) desiredArmor = 0;
+  
+  // If under attack, add incoming damage to desired armor
+  if (isUnderAttack) {
+      desiredArmor += incomingDamage;
+  }
+
+  // Cap armor spend by budget
+  let armorSpend = Math.min(desiredArmor, budget);
+  
+  // Execute Armor
+  if (armorSpend > 0) {
+      actions.push({ type: "armor", amount: armorSpend });
+      budget -= armorSpend;
+  }
+
+  // --- UPGRADE SECOND ---
+  // Only upgrade if we have satisfied immediate safety needs
   if (shouldUpgrade(level, budget, turn, isUnderAttack)) {
     const cost = getUpgradeCost(level);
     actions.push({ type: "upgrade" });
     budget -= cost;
   }
   // --- BUDGET ALLOCATION ---
-  const allocation = getBudgetAllocation(
-    phase,
-    turn,
-    playerTower.hp,
-    playerTower.armor,
-  );
-  // --- ARMOR DECISION ---
-  let armorBudget = Math.floor(budget * allocation.defense);
-  // If under attack, at least match incoming damage
-  if (isUnderAttack) {
-    armorBudget = Math.max(armorBudget, Math.min(incomingDamage, budget));
-  }
-  // Pre-fatigue armor burst
-  if (
-    turn >= FATIGUE_START_TURN - 2 &&
-    turn < FATIGUE_START_TURN &&
-    playerTower.armor < 40
-  ) {
-    armorBudget = Math.max(
-      armorBudget,
-      Math.min(Math.floor(budget * 0.5), budget),
-    );
-  }
-  armorBudget = Math.min(armorBudget, budget);
-  if (armorBudget > 0) {
-    actions.push({ type: "armor", amount: armorBudget });
-    budget -= armorBudget;
-  }
+  // const allocation = getBudgetAllocation(
+  //   phase,
+  //   turn,
+  //   playerTower.hp,
+  //   playerTower.armor,
+  // );
+  // // --- ARMOR DECISION ---
+  // let armorBudget = Math.floor(budget * allocation.defense);
+  // // If under attack, at least match incoming damage
+  // if (isUnderAttack) {
+  //   armorBudget = Math.max(armorBudget, Math.min(incomingDamage, budget));
+  // }
+  // // Pre-fatigue armor burst
+  // if (
+  //   turn >= FATIGUE_START_TURN - 2 &&
+  //   turn < FATIGUE_START_TURN &&
+  //   playerTower.armor < 40
+  // ) {
+  //   armorBudget = Math.max(
+  //     armorBudget,
+  //     Math.min(Math.floor(budget * 0.5), budget),
+  //   );
+  // }
+  // armorBudget = Math.min(armorBudget, budget);
+  // if (armorBudget > 0) {
+  //   actions.push({ type: "armor", amount: armorBudget });
+  //   budget -= armorBudget;
+  // }
   // --- ATTACK DECISION ---
   if (!enemyTowers || enemyTowers.length === 0) return actions;
+  
+  /* OLD LOGIC PRESERVED AS COMMENTS
   // Check for killable targets first — always go for the kill
   const killable = enemyTowers.filter((e) => survivability(e) <= budget);
   if (killable.length > 0) {
@@ -282,6 +316,47 @@ function combat(state) {
       }
     }
   }
+  */
+
+  // --- NEW ATTACK LOGIC ---
+  let attackBudget = budget; // Use whatever is left
+
+  // If not under attack and armor is good, maybe save some for next turn upgrade?
+  if (!isUnderAttack && playerTower.armor >= SAFE_ARMOR_THRESHOLD) {
+      // Keep some savings if we are close to next upgrade
+      const nextUpgradeCost = getUpgradeCost(level);
+      if (budget < nextUpgradeCost && budget > nextUpgradeCost * 0.5) {
+          attackBudget = 0; // Save it all
+      }
+  }
+
+  if (attackBudget > 5) {
+      // Prioritize retaliating against attackers
+      let targetId = null;
+      if (isUnderAttack && previousAttacks) {
+          const attacker = previousAttacks.find(a => a.action && a.action.targetId === playerTower.playerId);
+          if (attacker) targetId = attacker.playerId;
+      }
+
+      // If no attacker or we killed them, pick weakest
+      if (!targetId) {
+           // Only attack if we are really rich or it's late game
+           if (phase === "LATE" || attackBudget > 30) {
+                const weakest = enemyTowers.sort((a,b) => survivability(a) - survivability(b))[0];
+                targetId = weakest.playerId;
+           }
+      }
+
+      if (targetId) {
+        actions.push({
+            type: "attack",
+            targetId: targetId,
+            troopCount: attackBudget
+        });
+        budget -= attackBudget;
+      }
+  }
+
   return actions;
 }
 
