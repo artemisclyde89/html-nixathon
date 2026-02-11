@@ -237,6 +237,27 @@ function combat(state) {
       return actions;
   }
 
+  // --- LEVEL 4+: always expend full budget, 70% armor / 30% attack ---
+  if (level >= 4 && enemyTowers.length > 0) {
+      // Armor first: dynamic threshold + 70% of total budget
+      const armorAmount = Math.floor(budget * 0.7);
+      if (armorAmount > 0) {
+          actions.push({ type: "armor", amount: armorAmount });
+          budget -= armorAmount;
+      }
+      // Attack: remaining 30% at weakest enemy
+      if (budget > 0) {
+          const weakest = [...enemyTowers].sort((a, b) => survivability(a) - survivability(b))[0];
+          actions.push({
+              type: "attack",
+              targetId: weakest.playerId,
+              troopCount: budget,
+          });
+          budget = 0;
+      }
+      return actions;
+  }
+
   // --- PRIORITY: UPGRADE FIRST (IF SAFE) ---
   if (!isUnderAttack) {
       if (shouldUpgrade(level, budget, turn, isUnderAttack)) {
@@ -262,7 +283,7 @@ function combat(state) {
   // How much armor do we need to ADD to reach that target?
   const armorNeededToNotBeWeakest = Math.max(0, targetSurvivability - mySurvivability);
   // Fallback minimum armor level (absolute armor, not delta)
-  const minArmorBaseline = level >= 2 ? 20 : 10;
+  const minArmorBaseline = level >= 2 ? 35 : 15;
   // Target armor = whichever is higher: the "don't be weakest" need, or the baseline
   const targetArmorLevel = Math.max(
       playerTower.armor + armorNeededToNotBeWeakest, // armor needed to stay above weakest
@@ -305,25 +326,24 @@ function combat(state) {
   // --- ATTACK DECISION ---
   if (!enemyTowers || enemyTowers.length === 0) return actions;
   
-  // --- POST LEVEL 4: always expend budget, 70% armor / 30% attack ---
-  if (level >= 4) {
-      const extraArmor = Math.floor(budget * 0.7);
-      if (extraArmor > 0) {
-          actions.push({ type: "armor", amount: extraArmor });
-          budget -= extraArmor;
-      }
-      // Remaining ~30% always goes to attack — pick weakest enemy
-      if (budget > 0 && enemyTowers.length > 0) {
-          const weakest = [...enemyTowers].sort((a, b) => survivability(a) - survivability(b))[0];
-          actions.push({
-              type: "attack",
-              targetId: weakest.playerId,
-              troopCount: Math.min(budget, weakest.hp + weakest.armor),
-          });
-          budget = 0;
-      }
-      return actions;
-  }
+  // --- POST LEVEL 4 (OLD - moved to early exit above) ---
+  // if (level >= 4) {
+  //     const extraArmor = Math.floor(budget * 0.7);
+  //     if (extraArmor > 0) {
+  //         actions.push({ type: "armor", amount: extraArmor });
+  //         budget -= extraArmor;
+  //     }
+  //     if (budget > 0 && enemyTowers.length > 0) {
+  //         const weakest = [...enemyTowers].sort((a, b) => survivability(a) - survivability(b))[0];
+  //         actions.push({
+  //             type: "attack",
+  //             targetId: weakest.playerId,
+  //             troopCount: budget,
+  //         });
+  //         budget = 0;
+  //     }
+  //     return actions;
+  // }
 
   // --- NEW ATTACK LOGIC (level < 4) ---
   let attackBudget = budget; // Use whatever is left
