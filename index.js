@@ -209,6 +209,24 @@ function combat(state) {
   let budget = playerTower.resources;
   const phase = getGamePhase(turn, playerTower.level);
   const level = playerTower.level;
+  
+  // --- FIRST TURN LOGIC ---
+  if (turn === 0) {
+      if (budget >= 2) {
+          actions.push({ type: "armor", amount: 2 });
+          budget -= 2;
+      }
+      const targets = enemyTowers.filter(t => t.playerId !== playerTower.playerId);
+      for (const target of targets) {
+          if (budget < 1) break;
+          const damage = Math.floor(Math.random() * 3) + 1;
+          const actualDamage = Math.min(damage, budget);
+          actions.push({ type: "attack", targetId: target.playerId, troopCount: actualDamage });
+          budget -= actualDamage;
+      }
+      return actions;
+  }
+
   // --- Detect if we're under attack ---
   let incomingDamage = 0;
   if (previousAttacks) {
@@ -219,7 +237,42 @@ function combat(state) {
     }
   }
   const isUnderAttack = incomingDamage > 0;
-// --- ARMOR FIRST (ALWAYS TOP UP) ---
+
+  // --- PRIORITY: UPGRADE FIRST (IF SAFE) ---
+  if (!isUnderAttack) {
+      if (shouldUpgrade(level, budget, turn, isUnderAttack)) {
+        const cost = getUpgradeCost(level);
+        actions.push({ type: "upgrade" });
+        budget -= cost;
+      }
+  }
+
+  // --- PRIORITY: ARMOR (ALWAYS TOP UP) ---
+  const SAFE_ARMOR_THRESHOLD = 50;
+  let desiredArmor = SAFE_ARMOR_THRESHOLD - playerTower.armor;
+  if (desiredArmor < 0) desiredArmor = 0;
+  
+  if (isUnderAttack) {
+      desiredArmor += incomingDamage;
+  }
+
+  let armorSpend = Math.min(desiredArmor, budget);
+  if (armorSpend > 0) {
+      actions.push({ type: "armor", amount: armorSpend });
+      budget -= armorSpend;
+  }
+
+  // --- PRIORITY: UPGRADE SECOND (IF UNDER ATTACK) ---
+  if (isUnderAttack) {
+      if (shouldUpgrade(level, budget, turn, isUnderAttack)) {
+        const cost = getUpgradeCost(level);
+        actions.push({ type: "upgrade" });
+        budget -= cost;
+      }
+  }
+
+  /* OLD LOGIC PRESERVED AS COMMENTS
+  // --- ARMOR FIRST (ALWAYS TOP UP) ---
   const SAFE_ARMOR_THRESHOLD = 50;
   let desiredArmor = SAFE_ARMOR_THRESHOLD - playerTower.armor;
   if (desiredArmor < 0) desiredArmor = 0;
@@ -245,6 +298,7 @@ function combat(state) {
     actions.push({ type: "upgrade" });
     budget -= cost;
   }
+  */
   // --- BUDGET ALLOCATION ---
   // const allocation = getBudgetAllocation(
   //   phase,
@@ -320,6 +374,10 @@ function combat(state) {
 
   // --- NEW ATTACK LOGIC ---
   let attackBudget = budget; // Use whatever is left
+
+  if (level >= 3) {
+      attackBudget = Math.min(attackBudget, Math.floor(playerTower.resources * 0.3));
+  }
 
   // If not under attack and armor is good, maybe save some for next turn upgrade?
   if (!isUnderAttack && playerTower.armor >= SAFE_ARMOR_THRESHOLD) {
@@ -479,7 +537,7 @@ app.get("/healthz", (req, res) => {
 app.post("/negotiate", (req, res) => {
   try {
     const result = negotiate(req.body);
-    res.json([]);
+    res.json(result);
   } catch (err) {
     console.error("Negotiation error:", err.message);
     res.json([]);
@@ -489,7 +547,7 @@ app.post("/negotiate", (req, res) => {
 app.post("/combat", (req, res) => {
   try {
     const result = combat(req.body);
-    res.json([]);
+    res.json(result);
   } catch (err) {
     console.error("Combat error:", err.message);
     res.json([]);
