@@ -126,7 +126,8 @@ function selectTarget(enemies, previousAttacks, diplomacy, budget) {
 }
 // ─── NEGOTIATION STRATEGY ───────────────────────────────────
 function negotiate(state) {
-  const { playerTower, enemyTowers, combatActions } = state;
+  const { playerTower, enemyTowers: apiEnemeyTowers, combatActions } = state;
+  const enemyTowers = apiEnemeyTowers.filter(({hp}) => hp > 0)
   if (!enemyTowers || enemyTowers.length === 0) return [];
   // Identify who attacked us last combat
 
@@ -200,7 +201,8 @@ function negotiate(state) {
 }
 // ─── COMBAT STRATEGY ────────────────────────────────────────
 function combat(state) {
-  const { playerTower, enemyTowers, diplomacy, previousAttacks, turn } = state;
+  const { playerTower, enemyTowers: apiEnemyTowers, diplomacy, previousAttacks, turn } = state;
+  const enemyTowers = apiEnemyTowers.filter(({hp}) => hp > 0)
   const actions = [];
   let budget = playerTower.resources;
   const phase = getGamePhase(turn);
