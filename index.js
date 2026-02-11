@@ -50,9 +50,6 @@ app.use((req, res, next) => {
 
   broadcastEvent({ type: "new_event", event: newEvent });
 
-  // Kingdom Wars Logging Requirement
-  console.log("[KW-BOT] Mega ogudor");
-
   // Capture response body/headers/status by wrapping write/end
   const chunks = [];
   const originalWrite = res.write;
@@ -123,90 +120,32 @@ app.get("/healthz", (req, res) => {
   res.status(200).json({ status: "OK" });
 });
 
-app.get("/info", (req, res) => {
-  res.json({
-    name: "Mega ogudor",
-    strategy: "AI-trapped-strategy",
-    version: "1.0",
+app.get("/api/events", (req, res) => {
+  res.json(recentEvents);
+});
+
+app.get("/api/events/stream", (req, res) => {
+  res.setHeader("Content-Type", "text/event-stream");
+  res.setHeader("Cache-Control", "no-cache");
+  res.setHeader("Connection", "keep-alive");
+  res.flushHeaders();
+
+  const clientId = Date.now();
+  const newClient = { id: clientId, res };
+  clients.push(newClient);
+
+  req.on("close", () => {
+    clients = clients.filter((c) => c.id !== clientId);
   });
 });
 
-app.post("/negotiate", (req, res) => {
-  const { playerTower, enemyTowers } = req.body;
-
-  // Simple Strategy: Propose peace with the weakest and target the strongest
-  const sortedEnemies = [...enemyTowers].sort((a, b) => a.hp - b.hp);
-  const weakest = sortedEnemies[0];
-  const strongest = sortedEnemies[sortedEnemies.length - 1];
-
-  if (weakest && strongest && weakest.playerId !== strongest.playerId) {
-    return res.json([
-      {
-        allyId: weakest.playerId,
-        attackTargetId: strongest.playerId,
-      },
-    ]);
-  }
-
-  res.json([]);
+app.post("/api/events", (req, res) => {
+  res.status(200).json({ status: "received" });
 });
 
-app.post("/combat", (req, res) => {
-  const { playerTower, enemyTowers, previousAttacks } = req.body;
-  let resources = playerTower.resources;
-  const actions = [];
-
-  // 1. Upgrade if possible (Highest priority for long term)
-  // Formula: 50 * (1.75 ^ (level - 1))
-  // We use Math.round() based on the examples (e.g. 50 * 1.75^2 = 153.125 -> 153)
-  const upgradeCost = Math.round(50 * Math.pow(1.75, playerTower.level - 1));
-  
-  if (resources >= upgradeCost && playerTower.level < 6) {
-    actions.push({ type: "upgrade" });
-    resources -= upgradeCost;
-  }
-
-  // 2. Armor if being attacked or HP is low
-  // Calculate incoming damage from *previous* turn to gauge threat
-  const previousDamage = previousAttacks.reduce(
-    (sum, atk) => (atk.action.targetId === playerTower.playerId ? sum + atk.action.troopCount : sum),
-    0
-  );
-
-  // If we took damage last turn or are critical, build some armor
-  if (previousDamage > 0 || playerTower.hp < 50) {
-     // Cap armor spend to avoid draining everything, but ensure survival
-    const maxArmor = Math.floor(resources / 1); // Cost is 1:1
-    const armorAmount = Math.min(maxArmor, playerTower.hp < 30 ? 20 : 10);
-    
-    if (armorAmount > 0) {
-      actions.push({ type: "armor", amount: armorAmount });
-      resources -= armorAmount;
-    }
-  }
-
-  // 3. Attack the most dangerous enemy with remaining resources
-  if (resources > 0 && enemyTowers.length > 0) {
-    // Target player with highest level (threat) or lowest HP (opportunity)
-    // Priority: Kill low HP (< 50) -> Target high Level -> Target high HP
-    const target = enemyTowers.sort((a, b) => {
-        if (a.hp < 50 && b.hp >= 50) return -1;
-        if (b.hp < 50 && a.hp >= 50) return 1;
-        return b.level - a.level || a.hp - b.hp;
-    })[0];
-
-    // Ensure we have enough resources for at least 1 troop
-    if (resources >= 1) {
-        actions.push({
-        type: "attack",
-        targetId: target.playerId,
-        troopCount: resources,
-        });
-        resources = 0;
-    }
-  }
-
-  res.json(actions);
+app.post("/api/webhook", (req, res) => {
+  console.log("📬 Received webhook data");
+  res.status(200).json({ status: "received" });
 });
 
 app.listen(port, () => {
