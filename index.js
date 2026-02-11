@@ -216,6 +216,27 @@ function combat(state) {
   }
   const isUnderAttack = incomingDamage > 0;
 
+  // --- 1v1 ENDGAME: go all-in to kill the last enemy ---
+  if (enemyTowers.length === 1) {
+      const lastEnemy = enemyTowers[0];
+      const killCost = Math.ceil((lastEnemy.hp + (lastEnemy.armor || 0)) * 1.2);
+      const attackSpend = Math.min(killCost, budget);
+      if (attackSpend > 0) {
+          actions.push({
+              type: "attack",
+              targetId: lastEnemy.playerId,
+              troopCount: attackSpend,
+          });
+          budget -= attackSpend;
+      }
+      // Dump any leftover into armor
+      if (budget > 0) {
+          actions.push({ type: "armor", amount: budget });
+          budget = 0;
+      }
+      return actions;
+  }
+
   // --- PRIORITY: UPGRADE FIRST (IF SAFE) ---
   if (!isUnderAttack) {
       if (shouldUpgrade(level, budget, turn, isUnderAttack)) {
