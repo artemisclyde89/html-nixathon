@@ -412,23 +412,32 @@ function combat(state) {
   //     return actions;
   // }
 
-  // --- POST LEVEL 4: 70% armor / 30% attack split ---
+  // --- POST LEVEL 4: always expend budget, 70% armor / 30% attack ---
   if (level >= 4) {
       const extraArmor = Math.floor(budget * 0.7);
       if (extraArmor > 0) {
           actions.push({ type: "armor", amount: extraArmor });
           budget -= extraArmor;
       }
-      // Remaining ~30% goes to attack (handled below)
+      // Remaining ~30% always goes to attack — pick weakest enemy
+      if (budget > 0 && enemyTowers.length > 0) {
+          const weakest = [...enemyTowers].sort((a, b) => survivability(a) - survivability(b))[0];
+          actions.push({
+              type: "attack",
+              targetId: weakest.playerId,
+              troopCount: Math.min(budget, weakest.hp + weakest.armor),
+          });
+          budget = 0;
+      }
+      return actions;
   }
 
-  // --- NEW ATTACK LOGIC ---
+  // --- NEW ATTACK LOGIC (level < 4) ---
   let attackBudget = budget; // Use whatever is left
 
   // if (level >= 3) { // Old static cap
   //     attackBudget = Math.min(attackBudget, Math.floor(playerTower.resources * 0.3));
   // }
-  // Post level 4 budget is already capped by the 70/30 split above
   // For level 3, still cap attacks at 30% of total resources
   if (level === 3) {
       attackBudget = Math.min(attackBudget, Math.floor(playerTower.resources * 0.3));
@@ -455,7 +464,7 @@ function combat(state) {
       if (!targetId) {
            // Only attack if we are really rich or it's late game
            if (phase === "LATE" || attackBudget > 30) {
-                const weakest = enemyTowers.sort((a,b) => survivability(a) - survivability(b))[0];
+                const weakest = [...enemyTowers].sort((a,b) => survivability(a) - survivability(b))[0];
                 targetId = weakest.playerId;
            }
       }
