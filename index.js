@@ -36,14 +36,7 @@ function shouldUpgrade(level, resources, turn, isUnderAttack) {
   const cost = getUpgradeCost(level);
   if (resources < cost) return false;
   if (turn >= FATIGUE_START_TURN - 2) return false; // too late to benefit
-  const turnsRemaining = Math.max(ESTIMATED_GAME_END - turn, 5);
-  const currentIncome = getResourcesPerTurn(level);
-  const nextIncome = getResourcesPerTurn(level + 1);
-  const extraPerTurn = nextIncome - currentIncome;
-  const roi = (extraPerTurn * turnsRemaining) / cost;
-  // More conservative if under attack
-  if (isUnderAttack && roi < 2.0) return false;
-  return roi > 1.3;
+  return true
 }
 function getGamePhase(turn, level) {
   if (level < 3) return "EARLY";
