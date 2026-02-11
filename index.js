@@ -463,7 +463,7 @@ function combat(state) {
       // If no attacker or we killed them, pick weakest
       if (!targetId) {
            // Only attack if we are really rich or it's late game
-           if (phase === "LATE" || attackBudget > 30) {
+           if (phase === "LATE") {
                 const weakest = [...enemyTowers].sort((a,b) => survivability(a) - survivability(b))[0];
                 targetId = weakest.playerId;
            }
