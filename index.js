@@ -248,7 +248,7 @@ function combat(state) {
   }
 
   // --- PRIORITY: ARMOR (ALWAYS TOP UP) ---
-  const SAFE_ARMOR_THRESHOLD = 50;
+  const SAFE_ARMOR_THRESHOLD = level >= 2 ? 35 : 15;
   let desiredArmor = SAFE_ARMOR_THRESHOLD - playerTower.armor;
   if (desiredArmor < 0) desiredArmor = 0;
   
