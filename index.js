@@ -14,8 +14,7 @@ const UPGRADE_BASE_COST = 50;
 const UPGRADE_COST_MULTIPLIER = 1.75;
 const FATIGUE_START_TURN = 25;
 const ESTIMATED_GAME_END = 35;
-const BOT_NAME = "RogueGravity";
-const BOT_LOG_LINE = "[KW-BOT] Mega ogudor";
+
 // ─── UTILITY FUNCTIONS ─────────────────────────────────────
 function getResourcesPerTurn(level) {
   return Math.ceil(RESOURCE_BASE * Math.pow(RESOURCE_MULTIPLIER, level - 1));
@@ -31,9 +30,7 @@ function threatScore(tower) {
 function survivability(tower) {
   return tower.hp + (tower.armor || 0);
 }
-function logRequest() {
-  console.log(BOT_LOG_LINE);
-}
+
 // ─── ECONOMY ENGINE ─────────────────────────────────────────
 function shouldUpgrade(level, resources, turn, isUnderAttack) {
   const cost = getUpgradeCost(level);
@@ -48,31 +45,31 @@ function shouldUpgrade(level, resources, turn, isUnderAttack) {
   if (isUnderAttack && roi < 2.0) return false;
   return roi > 1.3;
 }
-function getGamePhase(turn) {
-  if (turn <= 6) return "EARLY";
+function getGamePhase(turn, level) {
+  if (level < 3) return "EARLY";
   if (turn <= 18) return "MID";
   return "LATE";
 }
 function getBudgetAllocation(phase, turn, hp, armor) {
   // Returns { offense, defense, savings } as fractions
-  if (hp <= 30) {
+  if (hp + armor <= 40) {
     // Emergency: heavy defense
-    return { offense: 0.2, defense: 0.7, savings: 0.1 };
+    return { offense: 0.0, defense: 1, savings: 0.0 };
   }
   switch (phase) {
     case "EARLY":
-      return { offense: 0.1, defense: 0.2, savings: 0.7 }; // save for upgrades
+      return { offense: 0, defense: 0.3, savings: 0.7 }; // save for upgrades
     case "MID":
-      return { offense: 0.6, defense: 0.2, savings: 0.2 };
+      return { offense: 0.4, defense: 0.6, savings: 0.0 };
     case "LATE":
       if (turn >= FATIGUE_START_TURN) {
         return { offense: 0.8, defense: 0.2, savings: 0.0 }; // all-in
       }
       // Pre-fatigue: armor up
       if (armor < 30) {
-        return { offense: 0.3, defense: 0.5, savings: 0.2 };
+        return { offense: 0.3, defense: 0.5, savings: 0 };
       }
-      return { offense: 0.6, defense: 0.3, savings: 0.1 };
+      return { offense: 0.6, defense: 0.3, savings: 0.0 };
     default:
       return { offense: 0.5, defense: 0.3, savings: 0.2 };
   }
@@ -205,7 +202,7 @@ function combat(state) {
   const enemyTowers = apiEnemyTowers.filter(({hp}) => hp > 0)
   const actions = [];
   let budget = playerTower.resources;
-  const phase = getGamePhase(turn);
+  const phase = getGamePhase(turn, playerTower.level);
   const level = playerTower.level;
   // --- Detect if we're under attack ---
   let incomingDamage = 0;
