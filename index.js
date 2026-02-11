@@ -247,27 +247,31 @@ function combat(state) {
   }
 
   // --- PRIORITY: ARMOR (DYNAMIC THRESHOLD) ---
-  // Calculate dynamic threshold: don't be the weakest tower
-  // const SAFE_ARMOR_THRESHOLD = level >= 2 ? 35 : 15; // Old static logic
-  const mySurvivability = survivability(playerTower);
-  const enemySurvivabilities = enemyTowers.map(e => survivability(e));
+  // Goal: ensure our survivability (hp + armor) is NEVER below the weakest enemy
+  const mySurvivability = playerTower.hp + (playerTower.armor || 0);
+  const enemySurvivabilities = enemyTowers.map(e => e.hp + (e.armor || 0));
   const minEnemySurvivability = enemySurvivabilities.length > 0
       ? Math.min(...enemySurvivabilities)
       : 0;
-  // We want our total survivability (hp + armor) to be above the weakest enemy
-  // so we are never classified as the weakest target
-  const targetSurvivability = minEnemySurvivability + 5; // small buffer above weakest
-  const neededForThreshold = Math.max(0, targetSurvivability - mySurvivability);
-  // Fallback minimum: at least keep some armor baseline
-  const SAFE_ARMOR_THRESHOLD = Math.max(neededForThreshold, level >= 2 ? 20 : 10);
+  const avgEnemySurvivability = enemySurvivabilities.length > 0
+      ? enemySurvivabilities.reduce((a, b) => a + b, 0) / enemySurvivabilities.length
+      : 0;
 
-  let desiredArmor = SAFE_ARMOR_THRESHOLD;
-  // If we already have enough armor above threshold, desiredArmor is 0
-  if (playerTower.armor >= SAFE_ARMOR_THRESHOLD) {
-      desiredArmor = 0;
-  } else {
-      desiredArmor = SAFE_ARMOR_THRESHOLD - playerTower.armor;
-  }
+  // We want to be above the weakest enemy + 10 buffer, so others target them not us
+  const targetSurvivability = minEnemySurvivability + 10;
+  // How much armor do we need to ADD to reach that target?
+  const armorNeededToNotBeWeakest = Math.max(0, targetSurvivability - mySurvivability);
+  // Fallback minimum armor level (absolute armor, not delta)
+  const minArmorBaseline = level >= 2 ? 20 : 10;
+  // Target armor = whichever is higher: the "don't be weakest" need, or the baseline
+  const targetArmorLevel = Math.max(
+      playerTower.armor + armorNeededToNotBeWeakest, // armor needed to stay above weakest
+      minArmorBaseline                                // absolute floor
+  );
+  // This is how much we actually need to spend on armor right now
+  const SAFE_ARMOR_THRESHOLD = targetArmorLevel; // used later in attack-save logic
+
+  let desiredArmor = Math.max(0, targetArmorLevel - playerTower.armor);
   
   if (isUnderAttack) {
       desiredArmor += incomingDamage;
