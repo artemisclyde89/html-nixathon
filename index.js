@@ -8,6 +8,250 @@ let recentEvents = [];
 const MAX_EVENTS = 100;
 let clients = [];
 
+const RESOURCE_BASE = 20;
+const RESOURCE_MULTIPLIER = 1.5;
+const UPGRADE_BASE_COST = 50;
+const UPGRADE_COST_MULTIPLIER = 1.75;
+const FATIGUE_START_TURN = 25;
+const ESTIMATED_GAME_END = 35;
+const BOT_NAME = "RogueGravity";
+const BOT_LOG_LINE = "[KW-BOT] Mega ogudor";
+// ─── UTILITY FUNCTIONS ─────────────────────────────────────
+function getResourcesPerTurn(level) {
+  return Math.ceil(RESOURCE_BASE * Math.pow(RESOURCE_MULTIPLIER, level - 1));
+}
+function getUpgradeCost(level) {
+  return Math.ceil(UPGRADE_BASE_COST * Math.pow(UPGRADE_COST_MULTIPLIER, level - 1));
+}
+function threatScore(tower) {
+  return tower.hp + (tower.armor || 0) + tower.level * 20;
+}
+function survivability(tower) {
+  return tower.hp + (tower.armor || 0);
+}
+function logRequest() {
+  console.log(BOT_LOG_LINE);
+}
+// ─── ECONOMY ENGINE ─────────────────────────────────────────
+function shouldUpgrade(level, resources, turn, isUnderAttack) {
+  const cost = getUpgradeCost(level);
+  if (resources < cost) return false;
+  if (turn >= FATIGUE_START_TURN - 2) return false; // too late to benefit
+  const turnsRemaining = Math.max(ESTIMATED_GAME_END - turn, 5);
+  const currentIncome = getResourcesPerTurn(level);
+  const nextIncome = getResourcesPerTurn(level + 1);
+  const extraPerTurn = nextIncome - currentIncome;
+  const roi = (extraPerTurn * turnsRemaining) / cost;
+  // More conservative if under attack
+  if (isUnderAttack && roi < 2.0) return false;
+  return roi > 1.3;
+}
+function getGamePhase(turn) {
+  if (turn <= 6) return "EARLY";
+  if (turn <= 18) return "MID";
+  return "LATE";
+}
+function getBudgetAllocation(phase, turn, hp, armor) {
+  // Returns { offense, defense, savings } as fractions
+  if (hp <= 30) {
+    // Emergency: heavy defense
+    return { offense: 0.2, defense: 0.7, savings: 0.1 };
+  }
+  switch (phase) {
+    case "EARLY":
+      return { offense: 0.1, defense: 0.2, savings: 0.7 }; // save for upgrades
+    case "MID":
+      return { offense: 0.6, defense: 0.2, savings: 0.2 };
+    case "LATE":
+      if (turn >= FATIGUE_START_TURN) {
+        return { offense: 0.8, defense: 0.2, savings: 0.0 }; // all-in
+      }
+      // Pre-fatigue: armor up
+      if (armor < 30) {
+        return { offense: 0.3, defense: 0.5, savings: 0.2 };
+      }
+      return { offense: 0.6, defense: 0.3, savings: 0.1 };
+    default:
+      return { offense: 0.5, defense: 0.3, savings: 0.2 };
+  }
+}
+// ─── TARGET SELECTION ───────────────────────────────────────
+function selectTarget(enemies, previousAttacks, diplomacy, budget) {
+  const myAttackers = new Set();
+  if (previousAttacks) {
+    for (const atk of previousAttacks) {
+      myAttackers.add(atk.playerId);
+    }
+  }
+  const alliedIds = new Set();
+  if (diplomacy) {
+    for (const d of diplomacy) {
+      if (d.action && d.action.allyId) {
+        alliedIds.add(d.playerId);
+      }
+    }
+  }
+  let bestTarget = null;
+  let bestScore = -Infinity;
+  for (const enemy of enemies) {
+    let score = 0;
+    // Weakness score — lower survivability = easier kill
+    score += (200 - survivability(enemy)) * 2;
+    // Revenge — they attacked us, hit them back
+    if (myAttackers.has(enemy.playerId)) {
+      score += 50;
+    }
+    // Threat level — high level enemies are dangerous
+    score += enemy.level * 15;
+    // Kill potential — can we finish them this turn?
+    if (survivability(enemy) <= budget) {
+      score += 100;
+    }
+    // Close to death bonus
+    if (enemy.hp <= 25) {
+      score += 80;
+    }
+    // Diplomatic consideration — slight penalty for attacking allies who didn't betray us
+    if (alliedIds.has(enemy.playerId) && !myAttackers.has(enemy.playerId)) {
+      score -= 40;
+    }
+    if (score > bestScore) {
+      bestScore = score;
+      bestTarget = enemy;
+    }
+  }
+  return bestTarget;
+}
+// ─── NEGOTIATION STRATEGY ───────────────────────────────────
+function negotiate(state) {
+  const { playerTower, enemyTowers, combatActions } = state;
+  if (!enemyTowers || enemyTowers.length === 0) return [];
+  // Identify who attacked us last combat
+  const attackersOnMe = new Set();
+  if (combatActions) {
+    for (const ca of combatActions) {
+      if (ca.action && ca.action.targetId === playerTower.playerId) {
+        attackersOnMe.add(ca.playerId);
+      }
+    }
+  }
+  // Sort enemies by threat score
+  const sorted = [...enemyTowers].sort((a, b) => threatScore(b) - threatScore(a));
+  const strongest = sorted[0];
+  const weakest = sorted[sorted.length - 1];
+  const myThreat = threatScore(playerTower);
+  const iAmStrongest = myThreat >= threatScore(strongest);
+  let allyId, attackTargetId;
+  if (iAmStrongest) {
+    // I'm the strongest: ally with the weakest, gang up on the middle
+    allyId = weakest.playerId;
+    attackTargetId = sorted.length > 1 ? sorted[Math.floor(sorted.length / 2)].playerId : undefined;
+  } else {
+    // Ally with the strongest (non-attacker if possible)
+    const nonAttackers = sorted.filter((e) => !attackersOnMe.has(e.playerId));
+    const allyCandidate = nonAttackers.length > 0 ? nonAttackers[0] : strongest;
+    allyId = allyCandidate.playerId;
+    // Point the ally at our biggest threat (someone else)
+    const threats = sorted.filter((e) => e.playerId !== allyId);
+    attackTargetId = threats.length > 0 ? threats[0].playerId : undefined;
+  }
+  // Don't ally with someone who attacked us
+  if (attackersOnMe.has(allyId) && enemyTowers.length > 1) {
+    const alternative = enemyTowers.find(
+      (e) => e.playerId !== allyId && !attackersOnMe.has(e.playerId)
+    );
+    if (alternative) {
+      allyId = alternative.playerId;
+    }
+  }
+  const message = { allyId };
+  if (attackTargetId && attackTargetId !== allyId) {
+    message.attackTargetId = attackTargetId;
+  }
+  return [message];
+}
+// ─── COMBAT STRATEGY ────────────────────────────────────────
+function combat(state) {
+  const { playerTower, enemyTowers, diplomacy, previousAttacks, turn } = state;
+  const actions = [];
+  let budget = playerTower.resources;
+  const phase = getGamePhase(turn);
+  const level = playerTower.level;
+  // --- Detect if we're under attack ---
+  let incomingDamage = 0;
+  if (previousAttacks) {
+    for (const atk of previousAttacks) {
+      if (atk.action && atk.action.targetId === playerTower.playerId) {
+        incomingDamage += atk.action.troopCount || 0;
+      }
+    }
+  }
+  const isUnderAttack = incomingDamage > 0;
+  // --- UPGRADE DECISION ---
+  if (shouldUpgrade(level, budget, turn, isUnderAttack)) {
+    const cost = getUpgradeCost(level);
+    actions.push({ type: "upgrade" });
+    budget -= cost;
+  }
+  // --- BUDGET ALLOCATION ---
+  const allocation = getBudgetAllocation(phase, turn, playerTower.hp, playerTower.armor);
+  // --- ARMOR DECISION ---
+  let armorBudget = Math.floor(budget * allocation.defense);
+  // If under attack, at least match incoming damage
+  if (isUnderAttack) {
+    armorBudget = Math.max(armorBudget, Math.min(incomingDamage, budget));
+  }
+  // Pre-fatigue armor burst
+  if (turn >= FATIGUE_START_TURN - 2 && turn < FATIGUE_START_TURN && playerTower.armor < 40) {
+    armorBudget = Math.max(armorBudget, Math.min(Math.floor(budget * 0.5), budget));
+  }
+  armorBudget = Math.min(armorBudget, budget);
+  if (armorBudget > 0) {
+    actions.push({ type: "armor", amount: armorBudget });
+    budget -= armorBudget;
+  }
+  // --- ATTACK DECISION ---
+  if (!enemyTowers || enemyTowers.length === 0) return actions;
+  // Check for killable targets first — always go for the kill
+  const killable = enemyTowers.filter((e) => survivability(e) <= budget);
+  if (killable.length > 0) {
+    // Kill the one with highest threat
+    killable.sort((a, b) => threatScore(b) - threatScore(a));
+    const killTarget = killable[0];
+    const troopsNeeded = survivability(killTarget);
+    actions.push({
+      type: "attack",
+      targetId: killTarget.playerId,
+      troopCount: troopsNeeded,
+    });
+    budget -= troopsNeeded;
+  }
+  // Spend remaining attack budget on primary target (if we haven't already attacked them)
+  const alreadyAttacked = new Set(
+    actions.filter((a) => a.type === "attack").map((a) => a.targetId)
+  );
+  if (budget > 5) {
+    const target = selectTarget(enemyTowers, previousAttacks, diplomacy, budget);
+    if (target && !alreadyAttacked.has(target.playerId)) {
+      const attackBudget = phase === "EARLY" ? Math.floor(budget * 0.3) : budget;
+      if (attackBudget > 0) {
+        actions.push({
+          type: "attack",
+          targetId: target.playerId,
+          troopCount: attackBudget,
+        });
+        budget -= attackBudget;
+      }
+    }
+  }
+  return actions;
+}
+
+
+// Update this to your target API URL via .env file
+const EXTERNAL_API_URL =
+  process.env.EXTERNAL_API_URL || "https://httpbin.org/post";
+
 app.use(cors({ origin: "*" }));
 app.set("trust proxy", 1);
 app.use(express.json());
@@ -118,6 +362,28 @@ function broadcastEvent(event) {
 
 app.get("/healthz", (req, res) => {
   res.status(200).json({ status: "OK" });
+});
+
+app.post("/negotiate", (req, res) => {
+  logRequest();
+  try {
+    const result = negotiate(req.body);
+    res.json(result);
+  } catch (err) {
+    console.error("Negotiation error:", err.message);
+    res.json([]);
+  }
+});
+// Combat phase
+app.post("/combat", (req, res) => {
+  logRequest();
+  try {
+    const result = combat(req.body);
+    res.json(result);
+  } catch (err) {
+    console.error("Combat error:", err.message);
+    res.json([]);
+  }
 });
 
 app.get("/api/events", (req, res) => {
