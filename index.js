@@ -159,31 +159,6 @@ function negotiate(state) {
   );
   const strongest = sorted[0];
   const weakest = sorted[sorted.length - 1];
-  const myThreat = threatScore(playerTower);
-  const iAmStrongest = myThreat >= threatScore(strongest);
-  let allyId, attackTargetId;
-  // if (iAmStrongest) {
-  //   // I'm the strongest: ally with the weakest, gang up on the middle
-  //   allyId = weakest.playerId;
-  //   attackTargetId = sorted.length > 1 ? sorted[Math.floor(sorted.length / 2)].playerId : undefined;
-  // } else {
-  //   // Ally with the strongest (non-attacker if possible)
-  //   const nonAttackers = sorted.filter((e) => !attackersOnMe.has(e.playerId));
-  //   const allyCandidate = nonAttackers.length > 0 ? nonAttackers[0] : strongest;
-  //   allyId = allyCandidate.playerId;
-  //   // Point the ally at our biggest threat (someone else)
-  //   const threats = sorted.filter((e) => e.playerId !== allyId);
-  //   attackTargetId = threats.length > 0 ? threats[0].playerId : undefined;
-  // }
-  // Don't ally with someone who attacked us
-  // if (attackersOnMe.has(allyId) && enemyTowers.length > 1) {
-  //   const alternative = enemyTowers.find(
-  //     (e) => e.playerId !== allyId && !attackersOnMe.has(e.playerId)
-  //   );
-  //   if (alternative) {
-  //     allyId = alternative.playerId;
-  //   }
-  // }
 
   const negotiations = enemyTowers.map((enemy) => {
     let targetId;
@@ -302,116 +277,9 @@ function combat(state) {
       }
   }
 
-  /* OLD LOGIC PRESERVED AS COMMENTS
-  // --- ARMOR FIRST (ALWAYS TOP UP) ---
-  const SAFE_ARMOR_THRESHOLD = 50;
-  let desiredArmor = SAFE_ARMOR_THRESHOLD - playerTower.armor;
-  if (desiredArmor < 0) desiredArmor = 0;
-  
-  // If under attack, add incoming damage to desired armor
-  if (isUnderAttack) {
-      desiredArmor += incomingDamage;
-  }
-
-  // Cap armor spend by budget
-  let armorSpend = Math.min(desiredArmor, budget);
-  
-  // Execute Armor
-  if (armorSpend > 0) {
-      actions.push({ type: "armor", amount: armorSpend });
-      budget -= armorSpend;
-  }
-
-  // --- UPGRADE SECOND ---
-  // Only upgrade if we have satisfied immediate safety needs
-  if (shouldUpgrade(level, budget, turn, isUnderAttack)) {
-    const cost = getUpgradeCost(level);
-    actions.push({ type: "upgrade" });
-    budget -= cost;
-  }
-  */
-  // --- BUDGET ALLOCATION ---
-  // const allocation = getBudgetAllocation(
-  //   phase,
-  //   turn,
-  //   playerTower.hp,
-  //   playerTower.armor,
-  // );
-  // // --- ARMOR DECISION ---
-  // let armorBudget = Math.floor(budget * allocation.defense);
-  // // If under attack, at least match incoming damage
-  // if (isUnderAttack) {
-  //   armorBudget = Math.max(armorBudget, Math.min(incomingDamage, budget));
-  // }
-  // // Pre-fatigue armor burst
-  // if (
-  //   turn >= FATIGUE_START_TURN - 2 &&
-  //   turn < FATIGUE_START_TURN &&
-  //   playerTower.armor < 40
-  // ) {
-  //   armorBudget = Math.max(
-  //     armorBudget,
-  //     Math.min(Math.floor(budget * 0.5), budget),
-  //   );
-  // }
-  // armorBudget = Math.min(armorBudget, budget);
-  // if (armorBudget > 0) {
-  //   actions.push({ type: "armor", amount: armorBudget });
-  //   budget -= armorBudget;
-  // }
   // --- ATTACK DECISION ---
   if (!enemyTowers || enemyTowers.length === 0) return actions;
   
-  /* OLD LOGIC PRESERVED AS COMMENTS
-  // Check for killable targets first — always go for the kill
-  const killable = enemyTowers.filter((e) => survivability(e) <= budget);
-  if (killable.length > 0) {
-    // Kill the one with highest threat
-    killable.sort((a, b) => threatScore(b) - threatScore(a));
-    const killTarget = killable[0];
-    const troopsNeeded = survivability(killTarget);
-    actions.push({
-      type: "attack",
-      targetId: killTarget.playerId,
-      troopCount: troopsNeeded,
-    });
-    budget -= troopsNeeded;
-  }
-  // Spend remaining attack budget on primary target (if we haven't already attacked them)
-  const alreadyAttacked = new Set(
-    actions.filter((a) => a.type === "attack").map((a) => a.targetId),
-  );
-  if (budget > 5) {
-    const target = selectTarget(
-      enemyTowers,
-      previousAttacks,
-      diplomacy,
-      budget,
-    );
-    if (target && !alreadyAttacked.has(target.playerId)) {
-      const attackBudget =
-        phase === "EARLY" ? Math.floor(budget * 0.3) : budget;
-      if (attackBudget > 0) {
-        actions.push({
-          type: "attack",
-          targetId: target.playerId,
-          troopCount: attackBudget,
-        });
-        budget -= attackBudget;
-      }
-    }
-  }
-  */
-
-  // --- FATIGUE MODE: dump everything into armor ---
-  // if (turn >= FATIGUE_START_TURN) {
-  //     if (budget > 0) {
-  //         actions.push({ type: "armor", amount: budget });
-  //         budget = 0;
-  //     }
-  //     return actions;
-  // }
-
   // --- POST LEVEL 4: always expend budget, 70% armor / 30% attack ---
   if (level >= 4) {
       const extraArmor = Math.floor(budget * 0.7);
@@ -481,10 +349,6 @@ function combat(state) {
 
   return actions;
 }
-
-// Update this to your target API URL via .env file
-const EXTERNAL_API_URL =
-  process.env.EXTERNAL_API_URL || "https://httpbin.org/post";
 
 app.use(cors({ origin: "*" }));
 app.set("trust proxy", 1);
