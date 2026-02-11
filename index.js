@@ -479,7 +479,7 @@ app.get("/healthz", (req, res) => {
 app.post("/negotiate", (req, res) => {
   try {
     const result = negotiate(req.body);
-    res.json(result);
+    res.json([]);
   } catch (err) {
     console.error("Negotiation error:", err.message);
     res.json([]);
@@ -489,7 +489,7 @@ app.post("/negotiate", (req, res) => {
 app.post("/combat", (req, res) => {
   try {
     const result = combat(req.body);
-    res.json(result);
+    res.json([]);
   } catch (err) {
     console.error("Combat error:", err.message);
     res.json([]);
