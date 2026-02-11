@@ -33,6 +33,9 @@ function survivability(tower) {
 
 // ─── ECONOMY ENGINE ─────────────────────────────────────────
 function shouldUpgrade(level, resources, turn, isUnderAttack) {
+  // Never upgrade past level 4
+  if (level >= 4) return false;
+
   const cost = getUpgradeCost(level);
   // Aggressive upgrade if safe
   if (!isUnderAttack) {
@@ -281,9 +284,11 @@ function combat(state) {
   }
 
   // --- TRICKLE ARMOR: keep accumulating even after threshold ---
-  // Spend ~10% of remaining budget on extra armor to keep growing over time
+  // Increase trickle rate at level 3+ to build up armor before level 4 cap
+  // const trickleRate = 0.1; // Old rate
+  const trickleRate = level >= 3 ? 0.25 : 0.1;
   if (budget > 0 && desiredArmor === 0) {
-      const trickleArmor = Math.max(1, Math.floor(budget * 0.1));
+      const trickleArmor = Math.max(1, Math.floor(budget * trickleRate));
       actions.push({ type: "armor", amount: trickleArmor });
       budget -= trickleArmor;
   }
@@ -398,15 +403,39 @@ function combat(state) {
   }
   */
 
+  // --- FATIGUE MODE: dump everything into armor ---
+  // if (turn >= FATIGUE_START_TURN) {
+  //     if (budget > 0) {
+  //         actions.push({ type: "armor", amount: budget });
+  //         budget = 0;
+  //     }
+  //     return actions;
+  // }
+
+  // --- POST LEVEL 4: 70% armor / 30% attack split ---
+  if (level >= 4) {
+      const extraArmor = Math.floor(budget * 0.7);
+      if (extraArmor > 0) {
+          actions.push({ type: "armor", amount: extraArmor });
+          budget -= extraArmor;
+      }
+      // Remaining ~30% goes to attack (handled below)
+  }
+
   // --- NEW ATTACK LOGIC ---
   let attackBudget = budget; // Use whatever is left
 
-  if (level >= 3) {
+  // if (level >= 3) { // Old static cap
+  //     attackBudget = Math.min(attackBudget, Math.floor(playerTower.resources * 0.3));
+  // }
+  // Post level 4 budget is already capped by the 70/30 split above
+  // For level 3, still cap attacks at 30% of total resources
+  if (level === 3) {
       attackBudget = Math.min(attackBudget, Math.floor(playerTower.resources * 0.3));
   }
 
   // If not under attack and armor is good, maybe save some for next turn upgrade?
-  if (!isUnderAttack && playerTower.armor >= SAFE_ARMOR_THRESHOLD) {
+  if (!isUnderAttack && playerTower.armor >= SAFE_ARMOR_THRESHOLD && level < 4) {
       // Keep some savings if we are close to next upgrade
       const nextUpgradeCost = getUpgradeCost(level);
       if (budget < nextUpgradeCost && budget > nextUpgradeCost * 0.5) {
