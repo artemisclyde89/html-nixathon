@@ -21,7 +21,9 @@ function getResourcesPerTurn(level) {
   return Math.ceil(RESOURCE_BASE * Math.pow(RESOURCE_MULTIPLIER, level - 1));
 }
 function getUpgradeCost(level) {
-  return Math.ceil(UPGRADE_BASE_COST * Math.pow(UPGRADE_COST_MULTIPLIER, level - 1));
+  return Math.ceil(
+    UPGRADE_BASE_COST * Math.pow(UPGRADE_COST_MULTIPLIER, level - 1),
+  );
 }
 function threatScore(tower) {
   return tower.hp + (tower.armor || 0) + tower.level * 20;
@@ -127,6 +129,16 @@ function negotiate(state) {
   const { playerTower, enemyTowers, combatActions } = state;
   if (!enemyTowers || enemyTowers.length === 0) return [];
   // Identify who attacked us last combat
+
+  if (enemyTowers.length === 1) {
+    // If only one enemy is left, don't tell them to attack anyone (or attack a ghost ID)
+    // Better yet: just return the alliance without a target
+    return [
+      {
+        allyId: enemyTowers[0].playerId,
+      },
+    ];
+  }
   const attackersOnMe = new Set();
   if (combatActions) {
     for (const ca of combatActions) {
@@ -136,39 +148,55 @@ function negotiate(state) {
     }
   }
   // Sort enemies by threat score
-  const sorted = [...enemyTowers].sort((a, b) => threatScore(b) - threatScore(a));
+  const sorted = [...enemyTowers].sort(
+    (a, b) => threatScore(b) - threatScore(a),
+  );
   const strongest = sorted[0];
   const weakest = sorted[sorted.length - 1];
   const myThreat = threatScore(playerTower);
   const iAmStrongest = myThreat >= threatScore(strongest);
   let allyId, attackTargetId;
-  if (iAmStrongest) {
-    // I'm the strongest: ally with the weakest, gang up on the middle
-    allyId = weakest.playerId;
-    attackTargetId = sorted.length > 1 ? sorted[Math.floor(sorted.length / 2)].playerId : undefined;
-  } else {
-    // Ally with the strongest (non-attacker if possible)
-    const nonAttackers = sorted.filter((e) => !attackersOnMe.has(e.playerId));
-    const allyCandidate = nonAttackers.length > 0 ? nonAttackers[0] : strongest;
-    allyId = allyCandidate.playerId;
-    // Point the ally at our biggest threat (someone else)
-    const threats = sorted.filter((e) => e.playerId !== allyId);
-    attackTargetId = threats.length > 0 ? threats[0].playerId : undefined;
-  }
+  // if (iAmStrongest) {
+  //   // I'm the strongest: ally with the weakest, gang up on the middle
+  //   allyId = weakest.playerId;
+  //   attackTargetId = sorted.length > 1 ? sorted[Math.floor(sorted.length / 2)].playerId : undefined;
+  // } else {
+  //   // Ally with the strongest (non-attacker if possible)
+  //   const nonAttackers = sorted.filter((e) => !attackersOnMe.has(e.playerId));
+  //   const allyCandidate = nonAttackers.length > 0 ? nonAttackers[0] : strongest;
+  //   allyId = allyCandidate.playerId;
+  //   // Point the ally at our biggest threat (someone else)
+  //   const threats = sorted.filter((e) => e.playerId !== allyId);
+  //   attackTargetId = threats.length > 0 ? threats[0].playerId : undefined;
+  // }
   // Don't ally with someone who attacked us
-  if (attackersOnMe.has(allyId) && enemyTowers.length > 1) {
-    const alternative = enemyTowers.find(
-      (e) => e.playerId !== allyId && !attackersOnMe.has(e.playerId)
-    );
-    if (alternative) {
-      allyId = alternative.playerId;
+  // if (attackersOnMe.has(allyId) && enemyTowers.length > 1) {
+  //   const alternative = enemyTowers.find(
+  //     (e) => e.playerId !== allyId && !attackersOnMe.has(e.playerId)
+  //   );
+  //   if (alternative) {
+  //     allyId = alternative.playerId;
+  //   }
+  // }
+
+  const negotiations = enemyTowers.map((enemy) => {
+    let targetId;
+
+    // STRATEGY:
+    // If we are talking to the Weakest, set them up to die against the Strongest.
+    // If we are talking to anyone else, tell them to crush the Weakest.
+    if (enemy.playerId === weakest.playerId) {
+      targetId = strongest.playerId;
+    } else {
+      targetId = weakest.playerId;
     }
-  }
-  const message = { allyId };
-  if (attackTargetId && attackTargetId !== allyId) {
-    message.attackTargetId = attackTargetId;
-  }
-  return [message];
+
+    return {
+      allyId: enemy.playerId, // "I am your friend"
+      attackTargetId: targetId, // "Go attack this guy"
+    };
+  });
+  return negotiations;
 }
 // ─── COMBAT STRATEGY ────────────────────────────────────────
 function combat(state) {
@@ -194,7 +222,12 @@ function combat(state) {
     budget -= cost;
   }
   // --- BUDGET ALLOCATION ---
-  const allocation = getBudgetAllocation(phase, turn, playerTower.hp, playerTower.armor);
+  const allocation = getBudgetAllocation(
+    phase,
+    turn,
+    playerTower.hp,
+    playerTower.armor,
+  );
   // --- ARMOR DECISION ---
   let armorBudget = Math.floor(budget * allocation.defense);
   // If under attack, at least match incoming damage
@@ -202,8 +235,15 @@ function combat(state) {
     armorBudget = Math.max(armorBudget, Math.min(incomingDamage, budget));
   }
   // Pre-fatigue armor burst
-  if (turn >= FATIGUE_START_TURN - 2 && turn < FATIGUE_START_TURN && playerTower.armor < 40) {
-    armorBudget = Math.max(armorBudget, Math.min(Math.floor(budget * 0.5), budget));
+  if (
+    turn >= FATIGUE_START_TURN - 2 &&
+    turn < FATIGUE_START_TURN &&
+    playerTower.armor < 40
+  ) {
+    armorBudget = Math.max(
+      armorBudget,
+      Math.min(Math.floor(budget * 0.5), budget),
+    );
   }
   armorBudget = Math.min(armorBudget, budget);
   if (armorBudget > 0) {
@@ -228,12 +268,18 @@ function combat(state) {
   }
   // Spend remaining attack budget on primary target (if we haven't already attacked them)
   const alreadyAttacked = new Set(
-    actions.filter((a) => a.type === "attack").map((a) => a.targetId)
+    actions.filter((a) => a.type === "attack").map((a) => a.targetId),
   );
   if (budget > 5) {
-    const target = selectTarget(enemyTowers, previousAttacks, diplomacy, budget);
+    const target = selectTarget(
+      enemyTowers,
+      previousAttacks,
+      diplomacy,
+      budget,
+    );
     if (target && !alreadyAttacked.has(target.playerId)) {
-      const attackBudget = phase === "EARLY" ? Math.floor(budget * 0.3) : budget;
+      const attackBudget =
+        phase === "EARLY" ? Math.floor(budget * 0.3) : budget;
       if (attackBudget > 0) {
         actions.push({
           type: "attack",
@@ -246,7 +292,6 @@ function combat(state) {
   }
   return actions;
 }
-
 
 // Update this to your target API URL via .env file
 const EXTERNAL_API_URL =
