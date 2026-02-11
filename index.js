@@ -409,7 +409,6 @@ app.get("/healthz", (req, res) => {
 });
 
 app.post("/negotiate", (req, res) => {
-  logRequest();
   try {
     const result = negotiate(req.body);
     res.json(result);
@@ -420,7 +419,6 @@ app.post("/negotiate", (req, res) => {
 });
 // Combat phase
 app.post("/combat", (req, res) => {
-  logRequest();
   try {
     const result = combat(req.body);
     res.json(result);
