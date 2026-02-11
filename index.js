@@ -247,10 +247,28 @@ function combat(state) {
       }
   }
 
-  // --- PRIORITY: ARMOR (ALWAYS TOP UP) ---
-  const SAFE_ARMOR_THRESHOLD = level >= 2 ? 35 : 15;
-  let desiredArmor = SAFE_ARMOR_THRESHOLD - playerTower.armor;
-  if (desiredArmor < 0) desiredArmor = 0;
+  // --- PRIORITY: ARMOR (DYNAMIC THRESHOLD) ---
+  // Calculate dynamic threshold: don't be the weakest tower
+  // const SAFE_ARMOR_THRESHOLD = level >= 2 ? 35 : 15; // Old static logic
+  const mySurvivability = survivability(playerTower);
+  const enemySurvivabilities = enemyTowers.map(e => survivability(e));
+  const minEnemySurvivability = enemySurvivabilities.length > 0
+      ? Math.min(...enemySurvivabilities)
+      : 0;
+  // We want our total survivability (hp + armor) to be above the weakest enemy
+  // so we are never classified as the weakest target
+  const targetSurvivability = minEnemySurvivability + 5; // small buffer above weakest
+  const neededForThreshold = Math.max(0, targetSurvivability - mySurvivability);
+  // Fallback minimum: at least keep some armor baseline
+  const SAFE_ARMOR_THRESHOLD = Math.max(neededForThreshold, level >= 2 ? 20 : 10);
+
+  let desiredArmor = SAFE_ARMOR_THRESHOLD;
+  // If we already have enough armor above threshold, desiredArmor is 0
+  if (playerTower.armor >= SAFE_ARMOR_THRESHOLD) {
+      desiredArmor = 0;
+  } else {
+      desiredArmor = SAFE_ARMOR_THRESHOLD - playerTower.armor;
+  }
   
   if (isUnderAttack) {
       desiredArmor += incomingDamage;
@@ -260,6 +278,14 @@ function combat(state) {
   if (armorSpend > 0) {
       actions.push({ type: "armor", amount: armorSpend });
       budget -= armorSpend;
+  }
+
+  // --- TRICKLE ARMOR: keep accumulating even after threshold ---
+  // Spend ~10% of remaining budget on extra armor to keep growing over time
+  if (budget > 0 && desiredArmor === 0) {
+      const trickleArmor = Math.max(1, Math.floor(budget * 0.1));
+      actions.push({ type: "armor", amount: trickleArmor });
+      budget -= trickleArmor;
   }
 
   // --- PRIORITY: UPGRADE SECOND (IF UNDER ATTACK) ---
