@@ -1,0 +1,1717 @@
+[
+    {
+        "id": "95b530e1-0505-46d2-a32e-ef069426d408",
+        "name": "Friday Night Live",
+        "members": [
+            {
+                "id": "d77d048d-ce17-4e7e-b4b9-2a9834141c22",
+                "email": "artur.puha@nixs.com",
+                "firstName": "Artur",
+                "lastName": "Puha",
+                "picture": "https://lh3.googleusercontent.com/a/ACg8ocLJpgl49BWl7pHf5uewbYtGruoR4qCJnAOJbMjwG-dUfPW3VYkB=s96-c",
+                "badgeIds": []
+            },
+            {
+                "id": "4886d193-ce8a-4b94-8d8e-ccc53d4daa9f",
+                "email": "vasyl.myroshnychenko@nixs.com",
+                "firstName": "Vasyl",
+                "lastName": "Myroshnychenko",
+                "picture": null,
+                "badgeIds": []
+            },
+            {
+                "id": "de08c137-3ec2-486a-af8d-dfe1201b44d4",
+                "email": "andrii.yatsenko@nixs.com",
+                "firstName": "Andrii",
+                "lastName": "Yatsenko",
+                "picture": "https://lh3.googleusercontent.com/a/ACg8ocL8jvXUolZKPGBxzu9l4e3smgeSjPQq1raI654oCGKyv-Q8R4OM=s96-c",
+                "badgeIds": []
+            },
+            {
+                "id": "dd3527de-340b-4e99-aada-ca287cbbc3da",
+                "email": "oleksandr.pasichnyi@nixs.com",
+                "firstName": "Oleksandr",
+                "lastName": "Pasichnyi",
+                "picture": "https://lh3.googleusercontent.com/a/ACg8ocKNsNzG0LFnu_YZaDadGOMgzrByORNfk6FgTgEE09m1TfkePHKr=s96-c",
+                "badgeIds": []
+            }
+        ]
+    },
+    {
+        "id": "3f01a2ee-6730-4d6b-bbea-6916e4240810",
+        "name": "rm -rf",
+        "members": [
+            {
+                "id": "8fa26fe7-d1f2-487d-b2a1-b2986796c59a",
+                "email": "olena.boiko@nixs.com",
+                "firstName": "Olena",
+                "lastName": "Boiko",
+                "picture": "https://lh3.googleusercontent.com/a/ACg8ocKzGwPK9B7Uv4GKhbvi5R1u2KumzJXrKDSOHWDsHw43RYaKjWM=s96-c",
+                "badgeIds": []
+            },
+            {
+                "id": "2bf6b4fb-817b-4369-8b66-0a29c91bb8d4",
+                "email": "kostiantyn.kostianytsia@nixs.com",
+                "firstName": "Kostiantyn",
+                "lastName": "Kostianytsia",
+                "picture": "https://lh3.googleusercontent.com/a/ACg8ocKQL_6O9p6ENsS1dwPLx9R8LJr0HoU9IQ7v3-9_AL_90W--Ac4=s96-c",
+                "badgeIds": []
+            }
+        ]
+    },
+    {
+        "id": "fbcd9d2f-4264-492b-b0ed-2f46a9fa2e7f",
+        "name": "Azure Dragons",
+        "members": [
+            {
+                "id": "b1830598-fe72-476c-95ba-3982f3bc273f",
+                "email": "zoltan.zdibak@nixs.com",
+                "firstName": "Zoltan",
+                "lastName": "Zdibak",
+                "picture": "https://lh3.googleusercontent.com/a/ACg8ocI9rUzqw3vTNfOpdkE4V3vIY6Eu-OL_xwDETiIBxES7MJUOVg4=s96-c",
+                "badgeIds": []
+            },
+            {
+                "id": "79f844fb-1066-4610-95f1-10f028bc767b",
+                "email": "bence.bodo@nixs.com",
+                "firstName": "Bence",
+                "lastName": "Bodo",
+                "picture": "https://lh3.googleusercontent.com/a/ACg8ocJNgnXoGzEH2M3YUqL4Y5mszQAUMLxAGrCwbQCn38DYRKFxQxw=s96-c",
+                "badgeIds": []
+            },
+            {
+                "id": "5e5fdd53-524c-495e-8970-f9be4d658fd2",
+                "email": "margareta.vida@nixs.com",
+                "firstName": "Margareta",
+                "lastName": "Vida",
+                "picture": "https://lh3.googleusercontent.com/a/ACg8ocLoRkrFEe2FWL-a6eboQNncMKCuOHDE5pv3cVYj-bJnZYQQ3o0=s96-c",
+                "badgeIds": []
+            },
+            {
+                "id": "3e9008dc-113c-439c-89f6-c57c761ed552",
+                "email": "istvan.karsai@nixs.com",
+                "firstName": "Istvan",
+                "lastName": "Karsai",
+                "picture": "https://lh3.googleusercontent.com/a/ACg8ocI1bHEsfVcEk3FG8CJHddn0TCWCXKY7gGuMrJVWAmTUOdojYQs=s96-c",
+                "badgeIds": []
+            }
+        ]
+    },
+    {
+        "id": "d751b6f7-9497-4d50-b406-fc6553ff75bf",
+        "name": "Karaf",
+        "members": [
+            {
+                "id": "c959fe72-0d09-4c07-a296-2bda27709178",
+                "email": "oleksandr.iovsa@nixs.com",
+                "firstName": "Oleksandr",
+                "lastName": "Iovsa",
+                "picture": "https://lh3.googleusercontent.com/a/ACg8ocLYj8UgDnCYW_DWiLFTKrCJkbcFoicP4zTkAQTSZldBAjw1=s96-c",
+                "badgeIds": [
+                    "cb7e6127-c0d3-4ab0-b5c5-deffbd8775d4",
+                    "f5c775bb-673f-4a74-9bea-f712cccdfde8"
+                ]
+            },
+            {
+                "id": "9a336546-1894-435e-aa37-673e8059819e",
+                "email": "dmitriy.kruhlyak@nixs.com",
+                "firstName": "Dmitriy",
+                "lastName": "Kruhlyak",
+                "picture": "https://lh3.googleusercontent.com/a/ACg8ocIxjtKJNPYsTMvtTfs1KdVbehfT5UqgzZm_QCqvPU7Jgq1eTlM=s96-c",
+                "badgeIds": [
+                    "cb7e6127-c0d3-4ab0-b5c5-deffbd8775d4",
+                    "f5c775bb-673f-4a74-9bea-f712cccdfde8"
+                ]
+            },
+            {
+                "id": "b3957249-68ea-4e6e-9a3e-dd8e84d67779",
+                "email": "anton.pushkar@nixs.com",
+                "firstName": "Anton",
+                "lastName": "Pushkar",
+                "picture": null,
+                "badgeIds": [
+                    "cb7e6127-c0d3-4ab0-b5c5-deffbd8775d4",
+                    "f5c775bb-673f-4a74-9bea-f712cccdfde8"
+                ]
+            },
+            {
+                "id": "b2f9e39a-0dc7-48d1-a8ba-0006727059b0",
+                "email": "mykyta.zemnytskyi@nixs.com",
+                "firstName": "Mykyta",
+                "lastName": "Zemnytskyi",
+                "picture": "https://lh3.googleusercontent.com/a/ACg8ocIVuk6lwmbq4u8v-u8hreLqnai7PM0rpp61ockoOUxexllMlA=s96-c",
+                "badgeIds": [
+                    "cb7e6127-c0d3-4ab0-b5c5-deffbd8775d4",
+                    "f5c775bb-673f-4a74-9bea-f712cccdfde8"
+                ]
+            }
+        ]
+    },
+    {
+        "id": "6e870f2a-8eac-4612-a626-026369c09a94",
+        "name": "Pyramid Scheme",
+        "members": [
+            {
+                "id": "2740b571-8ed8-4506-9262-e9eba533c8de",
+                "email": "zeyad.aboushanab@nixs.com",
+                "firstName": "Zeyad",
+                "lastName": "Aboushanab",
+                "picture": "https://lh3.googleusercontent.com/a/ACg8ocLKzlh5BBQda25CxcmPcX_sviRbrO8g43h8A699vaZHlcWhKUA=s96-c",
+                "badgeIds": []
+            },
+            {
+                "id": "72069a43-d30a-4196-a6c4-6fde891dd99d",
+                "email": "seifeldin.negm@nixs.com",
+                "firstName": "Seifeldin",
+                "lastName": "Negm",
+                "picture": "https://lh3.googleusercontent.com/a/ACg8ocLCAyL-q7XM2TLMjVj5RCHkQxxqh3FjNDf0_DQdRc_Ho8UNSaU=s96-c",
+                "badgeIds": []
+            },
+            {
+                "id": "52355691-c534-4778-9971-353976578b8d",
+                "email": "zeyad.zohny@nixs.com",
+                "firstName": "Zeyad",
+                "lastName": "Zohny",
+                "picture": "https://lh3.googleusercontent.com/a/ACg8ocJ3BiQQoYCx8fK2iLdGgzn2HLTQQ8YdLDUihftOfqYVyDSbwCs=s96-c",
+                "badgeIds": []
+            }
+        ]
+    },
+    {
+        "id": "3ad330bd-7836-4e65-9941-5ab86614e61d",
+        "name": "Pspspspspspspsps",
+        "members": [
+            {
+                "id": "efd9ef27-1488-425d-81a1-176a839e9423",
+                "email": "aleksandr.zlobin@nixs.com",
+                "firstName": "Aleksandr",
+                "lastName": "Zlobin",
+                "picture": "https://lh3.googleusercontent.com/a/ACg8ocJI-NAHipCSxZsZBNDmhMw3McfCTi_p0d2AAvJcjeDInrUo9_c=s96-c",
+                "badgeIds": [
+                    "7982fb7f-1095-42bf-bcae-ff192437f97c"
+                ]
+            },
+            {
+                "id": "571d54c6-76b8-428d-9a56-a28f396cacf6",
+                "email": "dmytro.poboiko@nixs.com",
+                "firstName": "Dmytro",
+                "lastName": "Poboiko",
+                "picture": "https://lh3.googleusercontent.com/a/ACg8ocIgBXyR0fEgFcm48gm-LZVs9CzKZTpJY4aA7w_gqOVkYLlpTso=s96-c",
+                "badgeIds": [
+                    "dd1f10fb-9567-47a9-b3a4-91b13180589d"
+                ]
+            },
+            {
+                "id": "137f31e9-3ce7-4d6c-b701-c508e3f743df",
+                "email": "dmytro.hrydin@nixs.com",
+                "firstName": "Dmytro",
+                "lastName": "Hrydin",
+                "picture": "https://lh3.googleusercontent.com/a/ACg8ocIwegLRXpFjZu1nv-LGq8Z04Qn69mnny4XIcoeKbvII_aajqh8=s96-c",
+                "badgeIds": [
+                    "7d1fadc4-6d74-40a4-bb49-ab5605b8a204",
+                    "7982fb7f-1095-42bf-bcae-ff192437f97c"
+                ]
+            },
+            {
+                "id": "400150f1-dd9e-44cf-a362-72a859aa2a47",
+                "email": "dmytro.roshchyn@nixs.com",
+                "firstName": "Dmytro",
+                "lastName": "Roshchyn",
+                "picture": "https://lh3.googleusercontent.com/a/ACg8ocK1mRjowE1XxufJGVB2sbePWkqLz3M-Rt5mcO2DcrYunGf8kGw=s96-c",
+                "badgeIds": []
+            }
+        ]
+    },
+    {
+        "id": "16963c2d-88ab-43f7-8770-6e7f7ae8bed7",
+        "name": "Bros",
+        "members": [
+            {
+                "id": "0655dbd1-75e2-45b1-bed6-0bec212fc388",
+                "email": "pavlo.riapolov@nixs.com",
+                "firstName": "Pavlo",
+                "lastName": "Riapolov",
+                "picture": "https://lh3.googleusercontent.com/a/ACg8ocKWOczlnWfck9AtbXFl_c-8OME2x8f3SwVwjIgQ_pUQd0b0HmI9=s96-c",
+                "badgeIds": []
+            },
+            {
+                "id": "802c5e39-8b1c-47d1-b5a8-13a480d119ee",
+                "email": "oleh.dolotin@nixs.com",
+                "firstName": "Oleh",
+                "lastName": "Dolotin",
+                "picture": "https://lh3.googleusercontent.com/a/ACg8ocKCsGwZUXAuFvEKTYYS_fizXpEhYCoH24nMyGLHfqAcbXiFKn8=s96-c",
+                "badgeIds": []
+            },
+            {
+                "id": "a150b14e-e653-4419-9454-9222fd6d9a61",
+                "email": "vladyslav.stusiak@nixs.com",
+                "firstName": "Vladyslav",
+                "lastName": "Stusiak",
+                "picture": "https://lh3.googleusercontent.com/a/ACg8ocLI9naaEZxfHKSgR6vAXCdQHlfIyw2j9EnawSAqPjQsMXROprw=s96-c",
+                "badgeIds": []
+            },
+            {
+                "id": "187e96ed-7c96-41b7-baa5-57d0f3e6f5d9",
+                "email": "serhii.makarenko@nixs.com",
+                "firstName": "Serhii",
+                "lastName": "Makarenko",
+                "picture": "https://lh3.googleusercontent.com/a/ACg8ocKK93E1WxlVs0PNfkEPqbIZNJEK3Giy0nstvcISi_4PiuNCGAA=s96-c",
+                "badgeIds": []
+            }
+        ]
+    },
+    {
+        "id": "3ce4aa15-c31a-4cfc-b82a-d8385f032d35",
+        "name": "meatballs",
+        "members": [
+            {
+                "id": "0e2f385c-c045-4928-bbc5-1105cb1214a0",
+                "email": "yevhen.lukianov@nixs.com",
+                "firstName": "Yevhen",
+                "lastName": "Lukianov",
+                "picture": "https://lh3.googleusercontent.com/a/ACg8ocInWrOzLhjI6HJ5IC6jZ56U_wTrjlERWyfOtjuuHk0LkUBdhXJD=s96-c",
+                "badgeIds": [
+                    "9fcc75f0-0c4e-4e1d-86f6-1d9f9e6d0d7e"
+                ]
+            },
+            {
+                "id": "d62a39b7-780c-4819-87d8-b0bcc2a1879f",
+                "email": "ruslan.borulchenko@nixs.com",
+                "firstName": "Ruslan",
+                "lastName": "Borulchenko",
+                "picture": "https://lh3.googleusercontent.com/a/ACg8ocJun7Va3fFHSfO1IW1EdEgJzlKMugDQw8RglrZ6_JbmPW1zGTnj=s96-c",
+                "badgeIds": [
+                    "9fcc75f0-0c4e-4e1d-86f6-1d9f9e6d0d7e"
+                ]
+            },
+            {
+                "id": "56dfae29-ff81-4165-9535-dc8a24b5feaf",
+                "email": "kostiantyn.svichkar@nixs.com",
+                "firstName": "Kostiantyn",
+                "lastName": "Svichkar",
+                "picture": "https://lh3.googleusercontent.com/a/ACg8ocI9oHTI8XcHuGLplZUSDbiGH0u9i0EUcTaGzihLKU5gEAI_7c4=s96-c",
+                "badgeIds": [
+                    "9fcc75f0-0c4e-4e1d-86f6-1d9f9e6d0d7e"
+                ]
+            },
+            {
+                "id": "17f992b7-208e-45c8-8c2a-15e1d04f60dd",
+                "email": "dmytro.velykykh@nixs.com",
+                "firstName": "Dmytro",
+                "lastName": "Velykykh",
+                "picture": "https://lh3.googleusercontent.com/a/ACg8ocJbWyD90AMv5E14-amftuSMlYa7UiPoL1C3V0IM0dI0u2I0N6A=s96-c",
+                "badgeIds": [
+                    "9f225a69-95ef-4cf5-924e-f8834c66970b",
+                    "bec38a9a-a1a4-473f-990e-1ff751be4b70",
+                    "9fcc75f0-0c4e-4e1d-86f6-1d9f9e6d0d7e"
+                ]
+            }
+        ]
+    },
+    {
+        "id": "7d1024aa-7b35-4a35-a62f-3293278da758",
+        "name": "Powerpuff Girls",
+        "members": [
+            {
+                "id": "8b0e680a-3bed-4ce8-9e87-a2d1bf12d3a4",
+                "email": "quiny.portales@nixs.com",
+                "firstName": "Quiny",
+                "lastName": "Portales",
+                "picture": "https://lh3.googleusercontent.com/a/ACg8ocLQdl8y0LUKIh88gnC6WEXZ_Gt6Y5riX6DzjaDFM-FsxxPdiq4=s96-c",
+                "badgeIds": []
+            },
+            {
+                "id": "9098e734-fb43-4bb5-9e55-2ba426544fc9",
+                "email": "alejandra.cuadros-rivas@nixs.com",
+                "firstName": "Alejandra",
+                "lastName": "Cuadros-Rivas",
+                "picture": "https://lh3.googleusercontent.com/a/ACg8ocKJZMR-3MDFzFGQ1f1PWcOaqlUU7Y3qB2B6cGReHIXMpNAVC_I=s96-c",
+                "badgeIds": []
+            }
+        ]
+    },
+    {
+        "id": "4c5bcf35-0add-4caa-8c7d-313238dbea03",
+        "name": "PlayStationBoys&Girl",
+        "members": [
+            {
+                "id": "b4f1f8a4-e9a3-4990-86c2-48566e61d674",
+                "email": "attila.liptak@nixs.com",
+                "firstName": "Attila",
+                "lastName": "Liptak",
+                "picture": "https://lh3.googleusercontent.com/a/ACg8ocJUFwUGBZkCFdjthBYvWK6Zy7njiSL3d698Errc0ra8mZ7kxiI=s96-c",
+                "badgeIds": []
+            },
+            {
+                "id": "5eff449e-3d4e-40a7-af00-139ea4b3b7ae",
+                "email": "eszter.sonkovits@nixs.com",
+                "firstName": "Eszter",
+                "lastName": "Sonkovits",
+                "picture": "https://lh3.googleusercontent.com/a/ACg8ocK2ZD6z5tiT4HwrIFoKNC2kPZCOvs27N7jL1BfKYmZ6ZVim8ek=s96-c",
+                "badgeIds": []
+            },
+            {
+                "id": "4b12ea45-1855-4ce4-8e07-69cd300187ac",
+                "email": "zsolt.harsanyi@nixs.com",
+                "firstName": "Zsolt",
+                "lastName": "Harsanyi",
+                "picture": "https://lh3.googleusercontent.com/a/ACg8ocIRCGpwgPCiUxAhCKsdDX97OHLZ3vSyACUMV7QhXM1DrKwWYoQ=s96-c",
+                "badgeIds": []
+            },
+            {
+                "id": "973f0e51-3fe3-4acf-838f-9876472807d1",
+                "email": "kristof.farago@nixs.com",
+                "firstName": "Kristof",
+                "lastName": "Farago",
+                "picture": "https://lh3.googleusercontent.com/a/ACg8ocJUTzYfRsHAkdjJcaxwFb18ewqrlMmnqDEDVCPVY2hhyusb75M=s96-c",
+                "badgeIds": []
+            }
+        ]
+    },
+    {
+        "id": "4b68ca1b-3409-4c3f-af72-c282eccf333a",
+        "name": "Rakamakafo",
+        "members": [
+            {
+                "id": "bfee4e82-50ec-44f9-b8ba-928c8b71c4aa",
+                "email": "tamas.marincsak@nixs.com",
+                "firstName": "Tamas",
+                "lastName": "Marincsak",
+                "picture": "https://lh3.googleusercontent.com/a/ACg8ocIgrDh4F3M3_8WmgTW95XTacPrDdJiQuvweomwdUbwvS9D1hJU=s96-c",
+                "badgeIds": []
+            },
+            {
+                "id": "81018e7d-f1fa-478c-8d22-3e65a4f490b4",
+                "email": "konstantine.nebieridze@nixs.com",
+                "firstName": "Konstantine",
+                "lastName": "Nebieridze",
+                "picture": "https://lh3.googleusercontent.com/a/ACg8ocI_VcoJprG9Dhh0zF29bivKceWTJknjgibXvevQzJS_V4p2mPQ=s96-c",
+                "badgeIds": []
+            },
+            {
+                "id": "a8bf7240-187a-4c8c-bae5-2c98f664aca7",
+                "email": "ihor.kraskovskyi@nixs.com",
+                "firstName": "Ihor",
+                "lastName": "Kraskovskyi",
+                "picture": "https://lh3.googleusercontent.com/a/ACg8ocLl3Fiyn1cfZrlM7Kk9938czbrlybPlUQVMwBcMKM5XDEC9AxA=s96-c",
+                "badgeIds": []
+            },
+            {
+                "id": "32cfe538-2d91-4474-94af-1551159a8617",
+                "email": "oleh.ionis@nixs.com",
+                "firstName": "Oleh",
+                "lastName": "Ionis",
+                "picture": "https://lh3.googleusercontent.com/a/ACg8ocLI9Hycsi7A6UE7uLN5tvf5D_o5fl59WY7XpDwbyLwh-TqD1i3I=s96-c",
+                "badgeIds": []
+            }
+        ]
+    },
+    {
+        "id": "279f08c2-a645-4efe-8f28-7790e108dc5a",
+        "name": "Nem TODOm",
+        "members": [
+            {
+                "id": "1bcd8c30-ac55-492c-924d-108fa612c0bf",
+                "email": "iryna.hurko@nixs.com",
+                "firstName": "Iryna",
+                "lastName": "Hurko",
+                "picture": "https://lh3.googleusercontent.com/a/ACg8ocJHWPyfK2z5CZR7u2BV1w1LEphq2pdPKlU8GWJ9FAQW4xUNFV-P=s96-c",
+                "badgeIds": []
+            },
+            {
+                "id": "a451380d-47b6-4a27-8169-58a4600edd3c",
+                "email": "daryna.danylenko@nixs.com",
+                "firstName": "Daryna",
+                "lastName": "Danylenko",
+                "picture": "https://lh3.googleusercontent.com/a/ACg8ocLDQlbRsntBw83g0Ze4OuouCx2mBm1Y2T9lidzJghyeXU1DvXV-=s96-c",
+                "badgeIds": []
+            }
+        ]
+    },
+    {
+        "id": "882a2be7-d7f3-4eec-b2d2-c05b42dd390f",
+        "name": "Katica",
+        "members": [
+            {
+                "id": "ac69edaa-c9e3-40a4-8ed2-acb4517802fc",
+                "email": "hanna.masna@nixs.com",
+                "firstName": "Hanna",
+                "lastName": "Masna",
+                "picture": "https://lh3.googleusercontent.com/a/ACg8ocL-xl6hYx_frqUHAZoSKQ_RoF1Rycql7Ue5fYH7VagM7ES_aaE=s96-c",
+                "badgeIds": []
+            },
+            {
+                "id": "a363cbb4-5f23-437b-97cf-189b173f908d",
+                "email": "viktoriia.kyrylova@nixs.com",
+                "firstName": "Viktoriia",
+                "lastName": "Kyrylova",
+                "picture": "https://lh3.googleusercontent.com/a/ACg8ocK98rl-sgDHbgtJgS3_y2diWL_2Cq6kypX86vdOVo02MDB7uUU=s96-c",
+                "badgeIds": []
+            },
+            {
+                "id": "3056013d-5e4e-4050-a230-4e15021167fd",
+                "email": "oleksandr.serbin@nixs.com",
+                "firstName": "Oleksandr",
+                "lastName": "Serbin",
+                "picture": "https://lh3.googleusercontent.com/a/ACg8ocLc4R-vBz5C3SoFq4UzGO-4xN96AGzADrHMYx_PnHmAh6juWP4=s96-c",
+                "badgeIds": []
+            },
+            {
+                "id": "b46892db-915b-4786-99bb-04ab0b6c554b",
+                "email": "vladyslav.velenteienko@nixs.com",
+                "firstName": "Vladyslav",
+                "lastName": "Velenteienko",
+                "picture": "https://lh3.googleusercontent.com/a/ACg8ocKlqTaRe3fPqwWFXN0u6p2Vz12JT5lcjV1TVU-afQY121gjwgrD=s96-c",
+                "badgeIds": []
+            }
+        ]
+    },
+    {
+        "id": "b772ddd6-f3a2-4786-b93a-40497f271c9f",
+        "name": "prompt.engs",
+        "members": [
+            {
+                "id": "a25e14aa-6403-430c-b9f9-c4b1d3ea3ee3",
+                "email": "tamas.tardos@nixs.com",
+                "firstName": "Tamas",
+                "lastName": "Tardos",
+                "picture": null,
+                "badgeIds": []
+            },
+            {
+                "id": "2cecb582-3ddd-4e3f-825e-74028bfbeebd",
+                "email": "yevhen.liashenko@nixs.com",
+                "firstName": "Yevhen",
+                "lastName": "Liashenko",
+                "picture": "https://lh3.googleusercontent.com/a/ACg8ocKiZzQZTQvtmpRRC-j2SLbyusOcd6YT2K7yEPxwO2-w_-EVbFOF=s96-c",
+                "badgeIds": []
+            },
+            {
+                "id": "b32e35fc-d1a0-468d-b418-28a547bfc743",
+                "email": "kristof.gal@nixs.com",
+                "firstName": "Kristof",
+                "lastName": "Gal",
+                "picture": "https://lh3.googleusercontent.com/a/ACg8ocL3FaSgcWI7E8P3obNhaT4DTsAyhX8D9iQtss4QH4z52BMMJ8AS=s96-c",
+                "badgeIds": []
+            },
+            {
+                "id": "39646772-e89b-47a2-a8e3-d8e37ec42aef",
+                "email": "volodymyr.shyrmanov@nixs.com",
+                "firstName": "Volodymyr",
+                "lastName": "Shyrmanov",
+                "picture": "https://lh3.googleusercontent.com/a/ACg8ocKO9Vye7tG6WUoq21luGoffDWSTNHIsyb7yadpx4MiQoSyiN9eP=s96-c",
+                "badgeIds": []
+            }
+        ]
+    },
+    {
+        "id": "085b2170-08a3-471a-92c0-5b2c58263353",
+        "name": "GigabitBusters",
+        "members": [
+            {
+                "id": "9324bb64-5b24-4f39-95b6-416036a10c88",
+                "email": "ihor.shatylo@nixs.com",
+                "firstName": "Ihor",
+                "lastName": "Shatylo",
+                "picture": "https://lh3.googleusercontent.com/a/ACg8ocIyn5gtTtnaZNN7Kc3xrVKb6Iu2MaVraOrvsUWp_C98NAdyruU=s96-c",
+                "badgeIds": [
+                    "a79379f6-6712-4a62-8a49-1fcb074c946e"
+                ]
+            },
+            {
+                "id": "5dc73b36-fec3-449c-8618-0a2a2f61708f",
+                "email": "roman.kolisnyk@nixs.com",
+                "firstName": "Roman",
+                "lastName": "Kolisnyk",
+                "picture": "https://lh3.googleusercontent.com/a/ACg8ocLcSLRY3eTZwEKTpciSckvIIglOuxPQcjRoSROpbxRXES6JkJQ=s96-c",
+                "badgeIds": [
+                    "a79379f6-6712-4a62-8a49-1fcb074c946e"
+                ]
+            },
+            {
+                "id": "50461462-4b8c-41a0-8299-04b8002f4450",
+                "email": "andrii.sydorenko@nixs.com",
+                "firstName": "Andrii",
+                "lastName": "Sydorenko",
+                "picture": "https://lh3.googleusercontent.com/a/ACg8ocJxjyC2kzSY_wu7g932F9PSMv6Yl0bsBVwo_e11rxrrS9AvXksW=s96-c",
+                "badgeIds": [
+                    "a79379f6-6712-4a62-8a49-1fcb074c946e"
+                ]
+            },
+            {
+                "id": "b4bbed09-507e-4a82-9668-12587941825b",
+                "email": "kyrylo.butskyi@nixs.com",
+                "firstName": "Kyrylo",
+                "lastName": "Butskyi",
+                "picture": "https://lh3.googleusercontent.com/a/ACg8ocJOnotDC6YJJeiYUDFrSDE-A3KGRXVsQfb9DM5CMzu--7SVVBQ=s96-c",
+                "badgeIds": [
+                    "a79379f6-6712-4a62-8a49-1fcb074c946e",
+                    "cb7e6127-c0d3-4ab0-b5c5-deffbd8775d4"
+                ]
+            }
+        ]
+    },
+    {
+        "id": "8392483b-bf5b-49ea-a61f-db1fab65d54c",
+        "name": "The Overfit",
+        "members": [
+            {
+                "id": "c4625f45-8c58-4a6c-81cf-9d6c6bbf6ebb",
+                "email": "szabolcs.fekete@nixs.com",
+                "firstName": "Szabolcs",
+                "lastName": "Fekete",
+                "picture": "https://lh3.googleusercontent.com/a/ACg8ocJMQ9cTQ6bRT0CbO7rIONuFhoEUrUdhGO6McslaaxDNs17sn1c=s96-c",
+                "badgeIds": []
+            },
+            {
+                "id": "ea9eaacb-b30d-482f-991b-1cb4f833ce95",
+                "email": "attila.kimberger@nixs.com",
+                "firstName": "Attila",
+                "lastName": "Kimberger",
+                "picture": "https://lh3.googleusercontent.com/a/ACg8ocKLxt6y0oUBo8gy7uXARRofPWsKFjXthLX2Zp4_I5cAW-Gpvu4=s96-c",
+                "badgeIds": []
+            }
+        ]
+    },
+    {
+        "id": "2e3e7afb-3a29-4a5c-81eb-f5e95a5aef75",
+        "name": "if err != nil",
+        "members": [
+            {
+                "id": "6d1cf59d-4be5-4e8f-9594-dcbacb74c14a",
+                "email": "nathan.davey@nixs.com",
+                "firstName": "Nathan",
+                "lastName": "Davey",
+                "picture": "https://lh3.googleusercontent.com/a/ACg8ocJD2mlxxRAfGrZJC6j0Hp1_v4GLmDK2VlYpE6Tdbl_296wQbtc=s96-c",
+                "badgeIds": [
+                    "6635eea7-2063-47e7-a6c0-c149d0d64dfa"
+                ]
+            },
+            {
+                "id": "cd3a59ce-7d52-4fbc-82fd-7655b347d1bb",
+                "email": "iryna.laktionova@nixs.com",
+                "firstName": "Iryna",
+                "lastName": "Laktionova",
+                "picture": "https://lh3.googleusercontent.com/a/ACg8ocLf-uKZHGblLO8QV_25YzZHoVaLb2qYUIQmpbyQd8KjH-gbnarb=s96-c",
+                "badgeIds": [
+                    "d3581e4d-cc6b-45b2-a4e9-171cb31270cd",
+                    "6635eea7-2063-47e7-a6c0-c149d0d64dfa",
+                    "28c75e91-57b8-48d4-bbe7-1032ab3e4cd4",
+                    "5db1e897-15a6-4b04-b3c5-a059807340bd"
+                ]
+            },
+            {
+                "id": "ab55ac71-278b-4ef6-9858-44a63af5059f",
+                "email": "oleksandr.khmil@nixs.com",
+                "firstName": "Oleksandr",
+                "lastName": "Khmil",
+                "picture": "https://lh3.googleusercontent.com/a/ACg8ocLfap7qEoYhtKz-HVPGOGRdF162h1DJTN45PJPV4Q5Smx1yaB8=s96-c",
+                "badgeIds": [
+                    "d3581e4d-cc6b-45b2-a4e9-171cb31270cd",
+                    "6635eea7-2063-47e7-a6c0-c149d0d64dfa",
+                    "28c75e91-57b8-48d4-bbe7-1032ab3e4cd4",
+                    "5db1e897-15a6-4b04-b3c5-a059807340bd"
+                ]
+            },
+            {
+                "id": "3c2c87d4-5b42-4cd3-9783-bb3ba1013124",
+                "email": "michal.strba@nixs.com",
+                "firstName": "Michal",
+                "lastName": "Strba",
+                "picture": "https://lh3.googleusercontent.com/a/ACg8ocJcv12XkkGXneNhbMXHYsLcav1kUcxibS_NGaaBrm0IdiqTcOI=s96-c",
+                "badgeIds": [
+                    "6635eea7-2063-47e7-a6c0-c149d0d64dfa"
+                ]
+            }
+        ]
+    },
+    {
+        "id": "aed4b9c9-a7c8-4854-aee8-40723bd1d796",
+        "name": "SIRIUS",
+        "members": [
+            {
+                "id": "8dd89c59-b9b3-4594-8756-e653ea0424c8",
+                "email": "olha.kashyrina@nixs.com",
+                "firstName": "Olha",
+                "lastName": "Kashyrina",
+                "picture": "https://lh3.googleusercontent.com/a/ACg8ocK80fqxSeNDMIbKPixYuht2dFq5h6WVY385GBg_htYsLO4mGgo=s96-c",
+                "badgeIds": [
+                    "2920c1ea-4c53-48de-98e5-72083a4ff82d",
+                    "eaf01543-90cd-4496-bd76-c1e91fe5646a"
+                ]
+            },
+            {
+                "id": "1b5ee025-85fd-46ff-a36e-0cf68f5c6318",
+                "email": "vitalii.lohoida@nixs.com",
+                "firstName": "Vitalii",
+                "lastName": "Lohoida",
+                "picture": "https://lh3.googleusercontent.com/a/ACg8ocLje3BaIjfrliGyzMzAHgLH6rsRKSzyg9KLkQYu29h_a72l7zU=s96-c",
+                "badgeIds": [
+                    "2920c1ea-4c53-48de-98e5-72083a4ff82d",
+                    "eaf01543-90cd-4496-bd76-c1e91fe5646a"
+                ]
+            },
+            {
+                "id": "13e4d9db-cb67-488c-837a-ae8842214774",
+                "email": "ivan.misarosh@nixs.com",
+                "firstName": "Ivan",
+                "lastName": "Misarosh",
+                "picture": "https://lh3.googleusercontent.com/a/ACg8ocJ9b2Pq5vTzGIFpkOAuz8bwrKbbuAk_VuxLsuoNISPBQeavt9w=s96-c",
+                "badgeIds": [
+                    "2920c1ea-4c53-48de-98e5-72083a4ff82d",
+                    "eaf01543-90cd-4496-bd76-c1e91fe5646a"
+                ]
+            },
+            {
+                "id": "1ff27df4-0b34-488c-b57f-98b88548eea3",
+                "email": "vladyslav.movchan@nixs.com",
+                "firstName": "Vladyslav",
+                "lastName": "Movchan",
+                "picture": "https://lh3.googleusercontent.com/a/ACg8ocKumrRaTSMBPXHEMyVYKyKUk3w7St7h-XaeveYFYfX0OpBOIj8z=s96-c",
+                "badgeIds": [
+                    "5c539a60-62bc-4bd0-b058-6f1c751126c7",
+                    "442caf7c-d0da-4958-877a-1058df896e3b",
+                    "2920c1ea-4c53-48de-98e5-72083a4ff82d",
+                    "eaf01543-90cd-4496-bd76-c1e91fe5646a",
+                    "771111c5-9d51-4e08-974c-4daae402c5cd"
+                ]
+            }
+        ]
+    },
+    {
+        "id": "85e212b6-9ea5-42b0-8b1b-0f8c54c14fd9",
+        "name": "Melman",
+        "members": [
+            {
+                "id": "ad01b866-4030-4bff-a763-51a93599abf3",
+                "email": "diana.zybina@nixs.com",
+                "firstName": "Diana",
+                "lastName": "Zybina",
+                "picture": "https://lh3.googleusercontent.com/a/ACg8ocKrobNmzxMf_tY-OZEBONbGxXQmqQeb4ppB6T-xi0yq62qHZb4=s96-c",
+                "badgeIds": []
+            },
+            {
+                "id": "17271fd0-a356-4bef-a877-00405c0128e8",
+                "email": "danylo.kazmin@nixs.com",
+                "firstName": "Danylo",
+                "lastName": "Kazmin",
+                "picture": null,
+                "badgeIds": []
+            },
+            {
+                "id": "52e754fe-8f5f-4bab-9a1b-f0d81fd640ca",
+                "email": "stanislav.holoborodyi@nixs.com",
+                "firstName": "Stanislav",
+                "lastName": "Holoborodyi",
+                "picture": "https://lh3.googleusercontent.com/a/ACg8ocI9sU5_DSe7w_sjuql6l-Yn0u8Rom1X9pl4KVb6QoazhRedmWXb=s96-c",
+                "badgeIds": []
+            },
+            {
+                "id": "30806391-6828-4c51-9989-5a41030d7e66",
+                "email": "vladyslav.but@nixs.com",
+                "firstName": "Vladyslav",
+                "lastName": "But",
+                "picture": "https://lh3.googleusercontent.com/a/ACg8ocJWrIhb2m7zLqFZ7djjZXB-R-ZmCSBLE0udxWelMgUGRCiAc_w=s96-c",
+                "badgeIds": []
+            }
+        ]
+    },
+    {
+        "id": "ca20def2-9b76-4482-bc2d-618026381c25",
+        "name": "LittleSaintJames Team",
+        "members": [
+            {
+                "id": "7734520f-1930-462a-a450-546a9d7c6f99",
+                "email": "nikoletta.gasparovics@nixs.com",
+                "firstName": "Nikoletta",
+                "lastName": "Gasparovics",
+                "picture": "https://lh3.googleusercontent.com/a/ACg8ocKSTHIzHvf-_RfqjQYCkhEWL8qhelemOWLIgbNL2sztMaBPm60=s96-c",
+                "badgeIds": [
+                    "3b69aaef-04ae-49db-b26b-5946bfb2c02e"
+                ]
+            },
+            {
+                "id": "81aba4e8-c812-40be-8f10-001dba9e9269",
+                "email": "illia.popov@nixs.com",
+                "firstName": "Illia",
+                "lastName": "Popov",
+                "picture": "https://lh3.googleusercontent.com/a/ACg8ocLo7hly_u5DIazOdXqogz2UFhJwE_wxCElampVZVJgov1rpey4=s96-c",
+                "badgeIds": [
+                    "3b69aaef-04ae-49db-b26b-5946bfb2c02e",
+                    "f40fe530-c5ca-446a-9675-4404d2e81f13"
+                ]
+            },
+            {
+                "id": "859ff956-e166-49c2-a528-b66c49cdfd7d",
+                "email": "anatol.kozhukhar@nixs.com",
+                "firstName": "Anatol",
+                "lastName": "Kozhukhar",
+                "picture": "https://lh3.googleusercontent.com/a/ACg8ocKhxFPMcQIwln6OXUxOYc4KOvKAHQCE-aERPB4gPkd3EuRsmnQE=s96-c",
+                "badgeIds": [
+                    "3b69aaef-04ae-49db-b26b-5946bfb2c02e"
+                ]
+            }
+        ]
+    },
+    {
+        "id": "9eca9aba-ff7b-4bac-9829-886f274e5cb1",
+        "name": "Red Protocol",
+        "members": [
+            {
+                "id": "71208a41-1718-450e-b173-308ad31fb7e4",
+                "email": "yevhen.lisnenko@nixs.com",
+                "firstName": "Yevhen",
+                "lastName": "Lisnenko",
+                "picture": "https://lh3.googleusercontent.com/a/ACg8ocIw0ih6ut3f91Qb_6Tb6Id-iSl3P6w16kAdcCEDpNQv_23v8MY=s96-c",
+                "badgeIds": []
+            },
+            {
+                "id": "4699f19d-24a9-4f89-84d2-4b9a762ea846",
+                "email": "volodymyr.panov@nixs.com",
+                "firstName": "Volodymyr",
+                "lastName": "Panov",
+                "picture": "https://lh3.googleusercontent.com/a/ACg8ocKZlM96LtT8Wd24Mk9wDu-m3KRB1Y_SzBNW-8Cf_6XX_a8KEh8=s96-c",
+                "badgeIds": [
+                    "dd1f10fb-9567-47a9-b3a4-91b13180589d"
+                ]
+            },
+            {
+                "id": "4dc94bf4-cd71-4e3b-b145-e655c1836e7c",
+                "email": "serhii.shelekhan@nixs.com",
+                "firstName": "Serhii",
+                "lastName": "Shelekhan",
+                "picture": "https://lh3.googleusercontent.com/a/ACg8ocJXMQgj5RKinRx55HDrV616mT7HORceOvEDXnKYgHvAGSmtCF8=s96-c",
+                "badgeIds": [
+                    "dd1f10fb-9567-47a9-b3a4-91b13180589d"
+                ]
+            }
+        ]
+    },
+    {
+        "id": "230fa074-c951-438f-8b12-316adca06c6e",
+        "name": "placeholder",
+        "members": [
+            {
+                "id": "ba4e4d09-4936-4498-99fa-47adb0670439",
+                "email": "andrii.yashyn@nixs.com",
+                "firstName": "Andrii",
+                "lastName": "Yashyn",
+                "picture": "https://lh3.googleusercontent.com/a/ACg8ocKK1td0kRTkLHQTu2RtbBsfXU7wUl-0UNuwJRvB15xGOHZc9bg=s96-c",
+                "badgeIds": []
+            },
+            {
+                "id": "be2b50d6-92ae-4192-b894-f36ecb53aee5",
+                "email": "mykyta.panchenko@nixs.com",
+                "firstName": "Mykyta",
+                "lastName": "Panchenko",
+                "picture": "https://lh3.googleusercontent.com/a/ACg8ocJfSFPEHSLvV0i6ZXCmynpMN3_APk6-50tIayy6oOhYEMnHwyo=s96-c",
+                "badgeIds": []
+            },
+            {
+                "id": "c06b326d-b389-48d1-99e8-142947d7b1ef",
+                "email": "pavlo.polezhai@nixs.com",
+                "firstName": "Pavlo",
+                "lastName": "Polezhai",
+                "picture": "https://lh3.googleusercontent.com/a/ACg8ocJ0qkgoF_AO9vGbD9u3F-bZ1m_u3rFv9uhDvBALw3AYiRbpdt0=s96-c",
+                "badgeIds": []
+            },
+            {
+                "id": "cfd2d13c-cfd8-4717-add9-84a751d497ff",
+                "email": "mykhailo.krylov@nixs.com",
+                "firstName": "Mykhailo",
+                "lastName": "Krylov",
+                "picture": "https://lh3.googleusercontent.com/a/ACg8ocIyIav2KLhYhzIZlzP2KVg0VhQUwXj3sBCcC_Ej9PvFr9OpMkg=s96-c",
+                "badgeIds": []
+            }
+        ]
+    },
+    {
+        "id": "8e9cc013-47c2-4e2f-98a3-ad1e3e562120",
+        "name": "If-Else Intelligence",
+        "members": [
+            {
+                "id": "148aacf5-751a-4cf2-96ee-8948758cebda",
+                "email": "anastasiya.grishayeva@nixs.com",
+                "firstName": "Anastasiya",
+                "lastName": "Grishayeva",
+                "picture": null,
+                "badgeIds": []
+            },
+            {
+                "id": "1214113c-92ed-4fe5-bf4a-19802bc86c0b",
+                "email": "ihor.sevriukov@nixs.com",
+                "firstName": "Ihor",
+                "lastName": "Sevriukov",
+                "picture": "https://lh3.googleusercontent.com/a/ACg8ocJ9c9W_n-O3Y4Pwq1qXo1G8GFSdsBXxtu3jJGgValqQIcvShNE=s96-c",
+                "badgeIds": []
+            },
+            {
+                "id": "94d385bb-3065-4d96-b782-41ad7f03c6b4",
+                "email": "artem.sbitniev@nixs.com",
+                "firstName": "Artem",
+                "lastName": "Sbitniev",
+                "picture": "https://lh3.googleusercontent.com/a/ACg8ocLyHjjs1SGPKSi6-pLv589GACxL2OPzsNoaBFUrm6AFUp2bG04=s96-c",
+                "badgeIds": [
+                    "b278bdc3-0af8-4ebf-8c62-f09fca9da0be",
+                    "9f225a69-95ef-4cf5-924e-f8834c66970b",
+                    "bec38a9a-a1a4-473f-990e-1ff751be4b70"
+                ]
+            },
+            {
+                "id": "c3a6e9f7-d82d-427f-92e0-bba8291847d2",
+                "email": "mykola.moiseienko@nixs.com",
+                "firstName": "Mykola",
+                "lastName": "Moiseienko",
+                "picture": "https://lh3.googleusercontent.com/a/ACg8ocJZV50tI9rjtPRY5kcV5kq-2W7__DWySuNENZYp6urxCpxGhbk=s96-c",
+                "badgeIds": []
+            }
+        ]
+    },
+    {
+        "id": "5638a83b-dc35-4af0-a34f-757e34c2ef28",
+        "name": "Vibe coders in wet socks",
+        "members": [
+            {
+                "id": "5258db2d-3c19-4021-bcac-fbf4ebd0a77a",
+                "email": "mykhailo.kryvonos@nixs.com",
+                "firstName": "Mykhailo",
+                "lastName": "Kryvonos",
+                "picture": "https://lh3.googleusercontent.com/a/ACg8ocJolYvLQxpie9K4Rj5wQA-pisaEsL0MlHN_o24MLFxoxgYasoKJ=s96-c",
+                "badgeIds": []
+            },
+            {
+                "id": "2048fd62-0259-41f1-8adf-9e42443a8b6a",
+                "email": "nestor.kaplenko@nixs.com",
+                "firstName": "Nestor",
+                "lastName": "Kaplenko",
+                "picture": "https://lh3.googleusercontent.com/a/ACg8ocKi4_KoL6wWXkQB6c0mPQOPvtwUiWpgJAxPI_Qz1jKqqKbA-Q=s96-c",
+                "badgeIds": []
+            },
+            {
+                "id": "69ff2b80-b81b-42e6-9c00-be26a058e04e",
+                "email": "denys.levtsun@nixs.com",
+                "firstName": "Denys",
+                "lastName": "Levtsun",
+                "picture": null,
+                "badgeIds": []
+            },
+            {
+                "id": "1ba67ba8-ae59-4120-9db5-3cd7069644fa",
+                "email": "stanislav.kholodov@nixs.com",
+                "firstName": "Stanislav",
+                "lastName": "Kholodov",
+                "picture": "https://lh3.googleusercontent.com/a/ACg8ocIpKZWsDutZBWkJzj8R_INg7xM6Iwki7Mnw3-ZvR3c8jc6LYTQ=s96-c",
+                "badgeIds": []
+            }
+        ]
+    },
+    {
+        "id": "604030c8-4b6c-426c-b012-264d5964f361",
+        "name": "H.T.M.L",
+        "members": [
+            {
+                "id": "5ce9a3d0-db17-4e2f-bf3d-f586b620b3de",
+                "email": "denes.jakucs@nixs.com",
+                "firstName": "Denes",
+                "lastName": "Jakucs",
+                "picture": null,
+                "badgeIds": []
+            },
+            {
+                "id": "5d468df2-fe54-46c5-a186-f1efa1ff26ea",
+                "email": "min-myat.zaw-moe@nixs.com",
+                "firstName": "Min Myat",
+                "lastName": "Zaw Moe",
+                "picture": "https://lh3.googleusercontent.com/a/ACg8ocK8ATyBbSpPW6u6ifYtXXmxJKCNbVYFGBMyaJDoU30jPG_lqEI=s96-c",
+                "badgeIds": []
+            },
+            {
+                "id": "9ec6d6a5-9b69-4c78-8370-7af13b4d71a3",
+                "email": "firas.abbassi@nixs.com",
+                "firstName": "Firas",
+                "lastName": "Abbassi",
+                "picture": "https://lh3.googleusercontent.com/a/ACg8ocLTm4LYXki9xV2WOE1KR-MCsoqpqt_oplwLYr4vC5TcXnTjaf0=s96-c",
+                "badgeIds": []
+            },
+            {
+                "id": "72cf8044-d945-4dca-8e76-b34784ad61ea",
+                "email": "yehya.allawand@nixs.com",
+                "firstName": "Yehya",
+                "lastName": "Allawand",
+                "picture": "https://lh3.googleusercontent.com/a/ACg8ocInJze0nVBNqswn3049KaTbo2rJB4Z60o4LZAGU1ke1jXdoqezl=s96-c",
+                "badgeIds": []
+            }
+        ]
+    },
+    {
+        "id": "0226ca6f-5483-45fe-ad6f-438c2ec67108",
+        "name": "kernel panic",
+        "members": [
+            {
+                "id": "021ee460-5905-4d1e-8011-c4018ff051da",
+                "email": "anna.derzhavina@nixs.com",
+                "firstName": "Anna",
+                "lastName": "Derzhavina",
+                "picture": "https://lh3.googleusercontent.com/a/ACg8ocLbzXDQ05tkuA9Xwrd6l_jpcpTaHFfvOaXF_1sb3HQJvh3RsiPk=s96-c",
+                "badgeIds": []
+            },
+            {
+                "id": "233e2709-60f7-44f1-8554-d75ed99ad3d7",
+                "email": "ivan.tykhonovskyi@nixs.com",
+                "firstName": "Ivan",
+                "lastName": "Tykhonovskyi",
+                "picture": null,
+                "badgeIds": []
+            }
+        ]
+    },
+    {
+        "id": "e9ec8831-f8fd-4f9a-9c2e-7262f7318fde",
+        "name": "AI bundle",
+        "members": [
+            {
+                "id": "4a498779-4a58-4288-a0e8-efa58f703f82",
+                "email": "dmytro.ziukin@nixs.com",
+                "firstName": "Dmytro",
+                "lastName": "Ziukin",
+                "picture": "https://lh3.googleusercontent.com/a/ACg8ocK509T-CspNlQt8Km-jJyHp_vUSWEBIbAlekQp8PNmp0ozxLns=s96-c",
+                "badgeIds": []
+            },
+            {
+                "id": "b97af831-061b-4619-a6b8-d2581c963df5",
+                "email": "oleksii.hurets@nixs.com",
+                "firstName": "Oleksii",
+                "lastName": "Hurets",
+                "picture": "https://lh3.googleusercontent.com/a/ACg8ocJ4djMLxGhATqwfHJA7eRBz6qQp2bBvKK2myabEIHoTtTzWYGw=s96-c",
+                "badgeIds": []
+            }
+        ]
+    },
+    {
+        "id": "722f7d26-a17b-4d44-b200-c71f8c062929",
+        "name": "Full Stack Heavyweights",
+        "members": [
+            {
+                "id": "11dbc955-3f36-42ea-8e98-6a6a9368eb34",
+                "email": "danylo.kutovyi@nixs.com",
+                "firstName": "Danylo",
+                "lastName": "Kutovyi",
+                "picture": "https://lh3.googleusercontent.com/a/ACg8ocL8J83zG-JcmWM-wZGdFT-AyiFrIP8fz406_83yIFqDCAfrk6vH=s96-c",
+                "badgeIds": []
+            },
+            {
+                "id": "f572df53-f00e-48d5-b022-0bcc0d79e1d0",
+                "email": "dmytro.lutfulin@nixs.com",
+                "firstName": "Dmytro",
+                "lastName": "Lutfulin",
+                "picture": "https://lh3.googleusercontent.com/a/ACg8ocJMbrodtf5nzt2g2VZ4BWKTD2db81kzwRNpk3cxx0oRJl1WeOg=s96-c",
+                "badgeIds": []
+            }
+        ]
+    },
+    {
+        "id": "1b94545f-4979-43c3-9f09-255cb24ff37a",
+        "name": "Cseresznye Csoport \uD83C\uDF52",
+        "members": [
+            {
+                "id": "5ff5b137-46a2-4ac5-9571-bd0ae47c2306",
+                "email": "levente.molnar@nixs.com",
+                "firstName": "Levente",
+                "lastName": "Molnar",
+                "picture": "https://lh3.googleusercontent.com/a/ACg8ocKd2OENqehGEbgwP9q-NHsXsfTtwLcvteMByyVRoxMZkp5kZ50=s96-c",
+                "badgeIds": []
+            },
+            {
+                "id": "e86ab552-be55-42e4-bdc9-72ef812d3b9b",
+                "email": "gabor.huszka@nixs.com",
+                "firstName": "Gabor",
+                "lastName": "Huszka",
+                "picture": null,
+                "badgeIds": []
+            },
+            {
+                "id": "7c14e141-e68b-449c-aaaf-44ac6091829c",
+                "email": "fauszt.andras@nixs.com",
+                "firstName": "Fauszt",
+                "lastName": "Andras",
+                "picture": "https://lh3.googleusercontent.com/a/ACg8ocJMvCJQup5pINO_qFNWuLJzXjPhMYqGUD2tKHusCG1Z_2_d_W0=s96-c",
+                "badgeIds": []
+            },
+            {
+                "id": "3fbd9d5f-30d7-4d03-9048-5bab8fb4c5f7",
+                "email": "zsolt.jaksa@nixs.com",
+                "firstName": "Zsolt",
+                "lastName": "Jaksa",
+                "picture": "https://lh3.googleusercontent.com/a/ACg8ocKrDIatpyej0C1vrFW-qeeTAR0ra0jQcfhjNZOXZgOm0z1V55o=s96-c",
+                "badgeIds": []
+            }
+        ]
+    },
+    {
+        "id": "45b38a95-b3c5-4d55-971f-0a136ac48224",
+        "name": "Hakuna Matata",
+        "members": [
+            {
+                "id": "7cbde670-8d21-44cc-92ac-c294fd233847",
+                "email": "ayyoub.soullami@nixs.com",
+                "firstName": "Ayyoub",
+                "lastName": "Soullami",
+                "picture": "https://lh3.googleusercontent.com/a/ACg8ocIT_jOvGuZkYBU1POUARQdK7CRzQDfQ8oZ-q4Svd7-xV9yvs_w=s96-c",
+                "badgeIds": []
+            },
+            {
+                "id": "781f31ae-2e60-41de-86d3-a88150d355fa",
+                "email": "usman.khan@nixs.com",
+                "firstName": "Usman",
+                "lastName": "Khan",
+                "picture": null,
+                "badgeIds": []
+            },
+            {
+                "id": "30402d7f-80d3-48ba-850a-aa76dc1075bb",
+                "email": "muhammad.faizan@nixs.com",
+                "firstName": "Muhammad",
+                "lastName": "Faizan",
+                "picture": "https://lh3.googleusercontent.com/a/ACg8ocKXG9MGZrrzkCtv5kVC_Snf57Y9h9U-k6YwsWo6eycfAbV3Ag=s96-c",
+                "badgeIds": []
+            },
+            {
+                "id": "7c62021a-51a6-409a-88d9-0710b36330e5",
+                "email": "yslamguly.pirgulyyev@nixs.com",
+                "firstName": "Yslamguly",
+                "lastName": "Pirgulyyev",
+                "picture": "https://lh3.googleusercontent.com/a/ACg8ocL_ly_o5KF3G_4jFOMBHl17Anv4847EhC_Wob2o_hVWMGwXMUg=s96-c",
+                "badgeIds": []
+            }
+        ]
+    },
+    {
+        "id": "9d31d122-20be-44f1-8849-69a0c97d6cd3",
+        "name": "xTower",
+        "members": [
+            {
+                "id": "892d41d8-d974-49c0-8c10-18150ad48049",
+                "email": "oleksandr.lisnykh@nixs.com",
+                "firstName": "Oleksandr",
+                "lastName": "Lisnykh",
+                "picture": "https://lh3.googleusercontent.com/a/ACg8ocJemkyITxWDhntxynCkff9zhFgWOF-ARwgyBtZya5GiugZ5xC9Z=s96-c",
+                "badgeIds": []
+            },
+            {
+                "id": "0bce4402-d9b2-438e-a7dd-f19210af0e16",
+                "email": "serhii.vasylchenko@nixs.com",
+                "firstName": "Serhii",
+                "lastName": "Vasylchenko",
+                "picture": "https://lh3.googleusercontent.com/a/ACg8ocIr-zCxLs3--8wAd0t1f9uqslWc5uZw8-amu_JaDvucGE_FV5o=s96-c",
+                "badgeIds": []
+            }
+        ]
+    },
+    {
+        "id": "e95cdf17-817f-4996-9b33-33fb1b2968a7",
+        "name": "//TODO",
+        "members": [
+            {
+                "id": "e9b2ce3a-795f-43bd-bde6-b91ce475dc68",
+                "email": "vince.hajba@nixs.com",
+                "firstName": "Vince",
+                "lastName": "Hajba",
+                "picture": null,
+                "badgeIds": [
+                    "7d1fadc4-6d74-40a4-bb49-ab5605b8a204"
+                ]
+            },
+            {
+                "id": "b59605d0-d830-4376-8606-41f7e11374ed",
+                "email": "attila.berczelly@nixs.com",
+                "firstName": "Attila",
+                "lastName": "Berczelly",
+                "picture": "https://lh3.googleusercontent.com/a/ACg8ocLZtEpJj7Ee5_AXLNgzpyDpXZxIP4A8LcUmlxSXw66_puSYjP4=s96-c",
+                "badgeIds": [
+                    "7d1fadc4-6d74-40a4-bb49-ab5605b8a204"
+                ]
+            },
+            {
+                "id": "34a99209-e1c2-4286-a089-9bbc012b5601",
+                "email": "david.felker@nixs.com",
+                "firstName": "David",
+                "lastName": "Felker",
+                "picture": "https://lh3.googleusercontent.com/a/ACg8ocLeWBAzT1G2CCLjYMs3G-Pt9qM-jTztXDUSARIgcl9cSY2D5w=s96-c",
+                "badgeIds": [
+                    "c7de4278-3e22-4f8f-9156-f19c010b443e"
+                ]
+            },
+            {
+                "id": "0eab518a-3b02-402c-8050-c998e1811c84",
+                "email": "zsolt.gulyas@nixs.com",
+                "firstName": "Zsolt",
+                "lastName": "Gulyas",
+                "picture": "https://lh3.googleusercontent.com/a/ACg8ocIep6WoctCmZnheXgZci2MUKSlQJuJupL1eULltbY1TqI2ooJA=s96-c",
+                "badgeIds": []
+            }
+        ]
+    },
+    {
+        "id": "c1b0bd5e-1ec7-4cbf-8508-cbaaeae2070a",
+        "name": "SerwerMutants",
+        "members": [
+            {
+                "id": "e20bb566-a16e-44db-98b3-1045f3758d27",
+                "email": "yevhenii.iovchu@nixs.com",
+                "firstName": "Yevhenii",
+                "lastName": "Iovchu",
+                "picture": "https://lh3.googleusercontent.com/a/ACg8ocLbgexyDk-vdDOZIRh5ZmSKvwJbFWgOXlJX35n8_ibCuq2L9GA=s96-c",
+                "badgeIds": []
+            },
+            {
+                "id": "8e22ee69-279e-4be2-b770-7a57df09c3c8",
+                "email": "vladyslav.lazoryk@nixs.com",
+                "firstName": "Vladyslav",
+                "lastName": "Lazoryk",
+                "picture": "https://lh3.googleusercontent.com/a/ACg8ocLRW1kyqXtXUOxcqsZQ4dAQmBppFWRNMAXgnk2On9WxOfFyDLw=s96-c",
+                "badgeIds": []
+            },
+            {
+                "id": "55c122f6-c911-4b07-80b3-fb99a60654f6",
+                "email": "shynggys.samarkhanov@nixs.com",
+                "firstName": "Shynggys",
+                "lastName": "Samarkhanov",
+                "picture": "https://lh3.googleusercontent.com/a/ACg8ocLPtnAkgVTRyld4imRDekbSFjtE1HocyeCoZDG7sG6rQLIu8gg=s96-c",
+                "badgeIds": [
+                    "2920c1ea-4c53-48de-98e5-72083a4ff82d",
+                    "9fcc75f0-0c4e-4e1d-86f6-1d9f9e6d0d7e"
+                ]
+            },
+            {
+                "id": "97609c40-4ad8-4a86-903c-49303e02795b",
+                "email": "andrii.hrimov@nixs.com",
+                "firstName": "Andrii",
+                "lastName": "Hrimov",
+                "picture": "https://lh3.googleusercontent.com/a/ACg8ocJ2If2YtzWXbInvmpqPdHz89_OcawP0csfOrrZRoASuU2g_rLo=s96-c",
+                "badgeIds": []
+            }
+        ]
+    },
+    {
+        "id": "2e6ff14e-e471-4fb4-a3b8-bac48f5306e2",
+        "name": "Táncsics",
+        "members": [
+            {
+                "id": "2617acbb-e17f-40b4-892b-46b990a4fad3",
+                "email": "alexander.argat@nixs.com",
+                "firstName": "Alexander",
+                "lastName": "Argat",
+                "picture": "https://lh3.googleusercontent.com/a/ACg8ocIQfOLsqLZ5NqkW0UWYsHsWuN1vm4pbk-Lyov0i9BIzY3OOHAo=s96-c",
+                "badgeIds": []
+            },
+            {
+                "id": "ecdebd11-084a-48ad-8111-453de08d45e9",
+                "email": "brigitta.csokoji@nixs.com",
+                "firstName": "Brigitta",
+                "lastName": "Csokoji",
+                "picture": "https://lh3.googleusercontent.com/a/ACg8ocIFHV3sDTkTteqJKPQrgSdZCpzqV_JUNGd9zUnjVAtbajHGog=s96-c",
+                "badgeIds": []
+            }
+        ]
+    },
+    {
+        "id": "008019ea-bb47-45a6-91c6-f6a9dbae1c37",
+        "name": "Asdf'; DROP TABLE users;",
+        "members": [
+            {
+                "id": "cdf00329-fcbd-4096-aec1-edfc1a94295d",
+                "email": "vitalii.parkhomenko@nixs.com",
+                "firstName": "Vitalii",
+                "lastName": "Parkhomenko",
+                "picture": "https://lh3.googleusercontent.com/a/ACg8ocIhk4TNmaFW1XwI96Fqh_b4NxrgOgqxKcUmsIo6dD9x4HaYQEw=s96-c",
+                "badgeIds": [
+                    "f2e8e744-e961-4c26-9adc-07ba12bb19e1",
+                    "16d62825-18ac-4e96-a85d-b92cd48cf7e4"
+                ]
+            },
+            {
+                "id": "5a0c4346-cfeb-427a-9649-0bff3b8b0b65",
+                "email": "timot.tarjan@nixs.com",
+                "firstName": "Timot",
+                "lastName": "Tarjan",
+                "picture": "https://lh3.googleusercontent.com/a/ACg8ocL_2fR86bNoRvK1dGP-UEzIR8YJNe-MHRDa7LHAxVW-H27JFQ=s96-c",
+                "badgeIds": [
+                    "7d1fadc4-6d74-40a4-bb49-ab5605b8a204",
+                    "f2e8e744-e961-4c26-9adc-07ba12bb19e1",
+                    "16d62825-18ac-4e96-a85d-b92cd48cf7e4"
+                ]
+            },
+            {
+                "id": "d69c3d5b-75ca-41ca-bdcc-47c7ec09bf54",
+                "email": "sandile.chitsa@nixs.com",
+                "firstName": "Sandile",
+                "lastName": "Chitsa",
+                "picture": "https://lh3.googleusercontent.com/a/ACg8ocKPLlp7mPJWEry7M0_0iWpgIeDkYU2IJGziIQtVR_7fdB7X8g=s96-c",
+                "badgeIds": [
+                    "f2e8e744-e961-4c26-9adc-07ba12bb19e1",
+                    "16d62825-18ac-4e96-a85d-b92cd48cf7e4"
+                ]
+            }
+        ]
+    },
+    {
+        "id": "b2e7196d-1117-4c8c-bea9-7f7915779bd6",
+        "name": "Bytebusters",
+        "members": [
+            {
+                "id": "f7a7f0e2-9e6b-4150-b352-6fd138589354",
+                "email": "denys.voloshyn@nixs.com",
+                "firstName": "Denys",
+                "lastName": "Voloshyn",
+                "picture": "https://lh3.googleusercontent.com/a/ACg8ocI82_bC2o4cO55e_cW-iPcRBNagucC6pSol2LnaQoBvYFqRJxQ=s96-c",
+                "badgeIds": []
+            },
+            {
+                "id": "5eac3572-4816-4fdb-ae42-80ef355403e6",
+                "email": "valeriia.sobol@nixs.com",
+                "firstName": "Valeriia",
+                "lastName": "Sobol",
+                "picture": "https://lh3.googleusercontent.com/a/ACg8ocIO83AT9896BHO5mVgQl_i6SwO158hXCMHn6gXu3fQPHNrXmw=s96-c",
+                "badgeIds": []
+            },
+            {
+                "id": "1693034f-0f75-4eea-9f58-efa3f175fa9c",
+                "email": "oksana.vykhryst@nixs.com",
+                "firstName": "Oksana",
+                "lastName": "Vykhryst",
+                "picture": "https://lh3.googleusercontent.com/a/ACg8ocJty5SmBwBPygy8SqN-kaiIgkMMZXA9W_3KeZYo33KjWV1-6yY=s96-c",
+                "badgeIds": []
+            }
+        ]
+    },
+    {
+        "id": "64f10ced-c7f9-4d34-874d-0433dfbc3f7d",
+        "name": "HardCode",
+        "members": [
+            {
+                "id": "7ff87080-07b7-4c77-8935-ec7333383442",
+                "email": "kanan.ibrahimli@nixs.com",
+                "firstName": "Kanan",
+                "lastName": "Ibrahimli",
+                "picture": "https://lh3.googleusercontent.com/a/ACg8ocJ0rSpdnW0V0y98B22CogcV7Izt9BBMBTyRuVr3KpSXCv9GQ_0=s96-c",
+                "badgeIds": []
+            },
+            {
+                "id": "8d3bf6f8-c21f-4bc3-85d6-a8e892bcc1db",
+                "email": "pal.szoroka@nixs.com",
+                "firstName": "Pal",
+                "lastName": "Szoroka",
+                "picture": "https://lh3.googleusercontent.com/a/ACg8ocKRPJb46zGBgG8pooZLgR5ktD1_mEyzk949JsRNLJHXULJ3qg0=s96-c",
+                "badgeIds": []
+            },
+            {
+                "id": "439cbae5-27e1-4acd-8449-0df9a2363bd5",
+                "email": "akbar.shirinzade@nixs.com",
+                "firstName": "Akbar",
+                "lastName": "Shirinzade",
+                "picture": null,
+                "badgeIds": []
+            },
+            {
+                "id": "8d632781-15ec-4110-bd46-3157961acd54",
+                "email": "ibadet.ismayilov@nixs.com",
+                "firstName": "Ibadet",
+                "lastName": "Ismayilov",
+                "picture": "https://lh3.googleusercontent.com/a/ACg8ocIgygOhJSmnuzBqqeQ4tWH-A_84fZdn3tUcIk70U9fzNP_47Yw=s96-c",
+                "badgeIds": []
+            }
+        ]
+    },
+    {
+        "id": "f851c4b1-6aac-4869-b9e4-0c6cdd1cb459",
+        "name": "Rage Byte",
+        "members": [
+            {
+                "id": "bf835fbd-13b9-4390-88a2-fed9f67ce2ee",
+                "email": "yaroslav.piskun@nixs.com",
+                "firstName": "Yaroslav",
+                "lastName": "Piskun",
+                "picture": "https://lh3.googleusercontent.com/a/ACg8ocJtwIpHcoivY2pvS2FlHuFgSgp0BfNjRxLWjrbOu_mo_3MZFvo=s96-c",
+                "badgeIds": []
+            },
+            {
+                "id": "9e05b0b2-40f4-4e8e-b535-a2a87fe090e7",
+                "email": "maryna.kozelska@nixs.com",
+                "firstName": "Maryna",
+                "lastName": "Kozelska",
+                "picture": "https://lh3.googleusercontent.com/a/ACg8ocIORANzCAFeCrWEbzCnpoMeMLHJB0Tqiyrf67T-RQa3dmgPh6M=s96-c",
+                "badgeIds": []
+            },
+            {
+                "id": "9dd745d8-ce05-4638-993f-e867b511ba0b",
+                "email": "peter.nemes@nixs.com",
+                "firstName": "Peter",
+                "lastName": "Nemes",
+                "picture": "https://lh3.googleusercontent.com/a/ACg8ocKBbm6lQQJwPE-3zZoVvS9Hzt-7KA9PJAeDgd9ZYkWlQYgl_lIr=s96-c",
+                "badgeIds": []
+            }
+        ]
+    },
+    {
+        "id": "045a69dc-a125-4636-888b-31495c84f141",
+        "name": "PinkPonyClub",
+        "members": [
+            {
+                "id": "ebb1588d-88ff-48df-9d37-55b338a418df",
+                "email": "anton.kabatut@nixs.com",
+                "firstName": "Anton",
+                "lastName": "Kabatut",
+                "picture": "https://lh3.googleusercontent.com/a/ACg8ocJMVlJa288XxzfJOF6xrPaMsDl133pqJDwYK_FGbLSTf3b2wmvi=s96-c",
+                "badgeIds": [
+                    "ebc1acba-ed40-480d-8db9-e72e9af41a45"
+                ]
+            },
+            {
+                "id": "3a054801-a807-464d-9a01-70c0a059b45a",
+                "email": "kateryna.martiusheva@nixs.com",
+                "firstName": "Kateryna",
+                "lastName": "Martiusheva",
+                "picture": "https://lh3.googleusercontent.com/a/ACg8ocIlKarK4LLsUEfjDgjYz7o5RQkLBshieR799RZO49cX4vr5fPER=s96-c",
+                "badgeIds": [
+                    "ebc1acba-ed40-480d-8db9-e72e9af41a45"
+                ]
+            },
+            {
+                "id": "6d2fdc79-fca4-447b-be31-eb80ab3a72c0",
+                "email": "denys.pozyvailov@nixs.com",
+                "firstName": "Denys",
+                "lastName": "Pozyvailov",
+                "picture": "https://lh3.googleusercontent.com/a/ACg8ocIYPcPcnRVCUg_sH84_De4bn2t85o_HBPPbhmfCyy22BFd1T9I=s96-c",
+                "badgeIds": [
+                    "ebc1acba-ed40-480d-8db9-e72e9af41a45"
+                ]
+            }
+        ]
+    },
+    {
+        "id": "8d3961d4-4325-41ad-baf5-bf4195039c71",
+        "name": "9 SIL",
+        "members": [
+            {
+                "id": "525d2e7d-929d-4150-a108-04a6d2ee53bf",
+                "email": "denis.yakushev@nixs.com",
+                "firstName": "Denis",
+                "lastName": "Yakushev",
+                "picture": null,
+                "badgeIds": [
+                    "1a82465d-ced6-4821-9739-0e4e856bc136"
+                ]
+            },
+            {
+                "id": "aef01ff8-df96-4484-8fa6-11f6a3be9c22",
+                "email": "maksim.badenko@nixs.com",
+                "firstName": "Maksim",
+                "lastName": "Badenko",
+                "picture": "https://lh3.googleusercontent.com/a/ACg8ocKMG8fpfesd7Rv5O4Q7aQ9Vu6_znNXf5vbCg3u7My0sqtCb3Kc=s96-c",
+                "badgeIds": [
+                    "1a82465d-ced6-4821-9739-0e4e856bc136"
+                ]
+            }
+        ]
+    },
+    {
+        "id": "be647560-b899-4cf9-b316-079f0057611e",
+        "name": "ZAVALI",
+        "members": [
+            {
+                "id": "93d3fe82-6eb5-4d61-8ddf-5653beb0f77e",
+                "email": "alina.krykun@nixs.com",
+                "firstName": "Alina",
+                "lastName": "Krykun",
+                "picture": "https://lh3.googleusercontent.com/a/ACg8ocJQlSVPMBZGjSvs0JztZ5vdYNN-0UfHSc2We76ebIvxLcumzFb7=s96-c",
+                "badgeIds": []
+            },
+            {
+                "id": "be0eadcd-dfc1-49cb-a625-1d9846c7a780",
+                "email": "roman.lutsenko@nixs.com",
+                "firstName": "Roman",
+                "lastName": "Lutsenko",
+                "picture": "https://lh3.googleusercontent.com/a/ACg8ocLzYIUVtzhTSAO5L5HLnWaz7bh-0o-nCva4D_4_sEOvQVmdldZe=s96-c",
+                "badgeIds": []
+            },
+            {
+                "id": "8ded1600-792d-429c-a31f-76aea0473263",
+                "email": "roman.dashkivskyy@nixs.com",
+                "firstName": "Roman",
+                "lastName": "Dashkivskyy",
+                "picture": "https://lh3.googleusercontent.com/a/ACg8ocLurfdWE77BQQCh-BMqQi-P1UvsTj3cwhRAW-YTQ40wwtXP7kc=s96-c",
+                "badgeIds": []
+            },
+            {
+                "id": "2749947c-50e5-4b63-89db-544c71dcac9f",
+                "email": "kostiantyn.zahrevskyi@nixs.com",
+                "firstName": "Kostiantyn",
+                "lastName": "Zahrevskyi",
+                "picture": "https://lh3.googleusercontent.com/a/ACg8ocI1TPftI2nPs1FBe24cnUVDYK2ab3ZSNKoOeeb9z_jb42aU1UVc=s96-c",
+                "badgeIds": []
+            }
+        ]
+    },
+    {
+        "id": "f8efdd98-9691-440c-a033-304cd75a01a5",
+        "name": "Slowgophs",
+        "members": [
+            {
+                "id": "3f26b8b0-0799-4179-bf55-252778a34001",
+                "email": "daniel.fischer@nixs.com",
+                "firstName": "Daniel",
+                "lastName": "Fischer",
+                "picture": "https://lh3.googleusercontent.com/a/ACg8ocIu8j-KjA6N0auVRqgt-H3MU3rzDRDY6qCTTITW5bzpALq1GRM=s96-c",
+                "badgeIds": [
+                    "879abf2b-ccbc-40e2-9ad5-95c774a9b6ad"
+                ]
+            },
+            {
+                "id": "0d7fdee0-2bc4-4bea-9b82-549d70a935ac",
+                "email": "maksym.kononets@nixs.com",
+                "firstName": "Maksym",
+                "lastName": "Kononets",
+                "picture": "https://lh3.googleusercontent.com/a/ACg8ocLcRJFWCipCl7qHHiZzrPDnKaM2jP3ZNYShms6K3EkykVD7nzI=s96-c",
+                "badgeIds": [
+                    "879abf2b-ccbc-40e2-9ad5-95c774a9b6ad",
+                    "f40fe530-c5ca-446a-9675-4404d2e81f13"
+                ]
+            },
+            {
+                "id": "72afd8a2-3104-4433-bdb7-d3225fdf1dea",
+                "email": "ilfat.islamgaliev@nixs.com",
+                "firstName": "Ilfat",
+                "lastName": "Islamgaliev",
+                "picture": null,
+                "badgeIds": [
+                    "879abf2b-ccbc-40e2-9ad5-95c774a9b6ad"
+                ]
+            }
+        ]
+    },
+    {
+        "id": "48389080-61c1-4792-81c2-9c1e0051a6af",
+        "name": "PipCupBubCup",
+        "members": [
+            {
+                "id": "0ee68664-3882-4017-9cc4-752343baa10d",
+                "email": "artem.chuvaiev@nixs.com",
+                "firstName": "Artem",
+                "lastName": "Chuvaiev",
+                "picture": "https://lh3.googleusercontent.com/a/ACg8ocJcpIjHcygJQTREE8v9ZDHcD8mHYG50snVfJDhVzf10K2nrrkM=s96-c",
+                "badgeIds": []
+            },
+            {
+                "id": "15dc05a1-d57c-427c-8241-3e8601ee0764",
+                "email": "daniil.zbitnyev@nixs.com",
+                "firstName": "Daniil",
+                "lastName": "Zbitnyev",
+                "picture": "https://lh3.googleusercontent.com/a/ACg8ocIiRS-glDt0x7UH5lOhaC_tZLPtpoTU4Qtwa-1voktEKYY2XZ4=s96-c",
+                "badgeIds": [
+                    "563beb46-d329-4f8e-84eb-997bbca37b45"
+                ]
+            },
+            {
+                "id": "05cd7435-59ac-4d54-aea6-0f1ae7187236",
+                "email": "dmytro.buhai@nixs.com",
+                "firstName": "Dmytro",
+                "lastName": "Buhai",
+                "picture": null,
+                "badgeIds": []
+            },
+            {
+                "id": "7d691532-cb8c-4a35-8499-6442ac740749",
+                "email": "dmytro.khrysanfov@nixs.com",
+                "firstName": "Dmytro",
+                "lastName": "Khrysanfov",
+                "picture": "https://lh3.googleusercontent.com/a/ACg8ocIGKRNNSX8sdokMfipw_QlJpRsYKDUr-aPLrC4O15bmO8EUCJs=s96-c",
+                "badgeIds": []
+            }
+        ]
+    },
+    {
+        "id": "0970d42c-d5d8-4dd0-a86e-4c8f2f6cec50",
+        "name": "Szimpla",
+        "members": [
+            {
+                "id": "79421589-a94f-4b86-a25f-54e1b4897d31",
+                "email": "yosri.harrabi@nixs.com",
+                "firstName": "Yosri",
+                "lastName": "Harrabi",
+                "picture": "https://lh3.googleusercontent.com/a/ACg8ocKykAogUXZ1CY1wDz6qHGw-s6D-vG1uD0kJh0ow2xjLu6gwQDM=s96-c",
+                "badgeIds": []
+            },
+            {
+                "id": "e74f371d-e289-425f-b762-a37023612e43",
+                "email": "cihat.gelir@nixs.com",
+                "firstName": "Cihat",
+                "lastName": "Gelir",
+                "picture": "https://lh3.googleusercontent.com/a/ACg8ocJ0UzbOcnckvuW7I9yJy7NwerRLDGe_GUTbZBQDN6qceQHe4Bs=s96-c",
+                "badgeIds": []
+            },
+            {
+                "id": "d93cf148-12bb-4e6c-b1ad-0520aa06e5b1",
+                "email": "ibrahim.mammadov@nixs.com",
+                "firstName": "Ibrahim",
+                "lastName": "Mammadov",
+                "picture": "https://lh3.googleusercontent.com/a/ACg8ocJwHriGahj45KSGxwMzkyOmaVNivSkiQv5IByAulmc3a8AT_iA=s96-c",
+                "badgeIds": []
+            },
+            {
+                "id": "9a3e727f-7381-4f81-b7c1-a0742fb5c280",
+                "email": "armand.biro@nixs.com",
+                "firstName": "Armand",
+                "lastName": "Biro",
+                "picture": "https://lh3.googleusercontent.com/a/ACg8ocJ_EiMV6LOUjBMRjjjGQCn2ubck2QLTtgarVMUU8US4LLsqPIg=s96-c",
+                "badgeIds": []
+            }
+        ]
+    },
+    {
+        "id": "6a01ffcf-e0ed-4985-85e0-0ca77c9b074b",
+        "name": "Hummus",
+        "members": [
+            {
+                "id": "3f778958-6867-40c9-88b1-7cf4ee6db5e7",
+                "email": "moath.abu-hamad@nixs.com",
+                "firstName": "Moath",
+                "lastName": "Abu Hamad",
+                "picture": "https://lh3.googleusercontent.com/a/ACg8ocLocBHCg70T3LIqQeplFMiCC3IORMrv9_Dx7Taaf0sWeCDobwQ5=s96-c",
+                "badgeIds": [
+                    "771111c5-9d51-4e08-974c-4daae402c5cd"
+                ]
+            },
+            {
+                "id": "d2f58af4-76dc-4986-8618-42df09f9fb9e",
+                "email": "mohammed.abufarhana@nixs.com",
+                "firstName": "Mohammed",
+                "lastName": "Abufarhana",
+                "picture": "https://lh3.googleusercontent.com/a/ACg8ocIvT0HsebLqFAFCQlNLd8IrVWtuOWmhcga67mrTo4-zZbe0BMfy=s96-c",
+                "badgeIds": [
+                    "771111c5-9d51-4e08-974c-4daae402c5cd"
+                ]
+            }
+        ]
+    },
+    {
+        "id": "e8609290-cf21-4761-ba98-4a3414eca297",
+        "name": "Honey Badgers",
+        "members": [
+            {
+                "id": "dcd498c0-e75d-4664-a057-f3cc6947b345",
+                "email": "vladyslav.balabanov@nixs.com",
+                "firstName": "Vladyslav",
+                "lastName": "Balabanov",
+                "picture": "https://lh3.googleusercontent.com/a/ACg8ocLg4YTAaMJBbgU8b3loIvBz5SkKIPUwuzu279uwNgs_IUbTT9Q=s96-c",
+                "badgeIds": [
+                    "1ad7d022-5089-485d-9282-9372d81edd0e"
+                ]
+            },
+            {
+                "id": "a42e4d9f-7939-4c86-906b-773adbf21ebc",
+                "email": "oksana.kushchyk@nixs.com",
+                "firstName": "Oksana",
+                "lastName": "Kushchyk",
+                "picture": "https://lh3.googleusercontent.com/a/ACg8ocIjHD4dHL2SQkhJwxZ0tIcn_kbhZkSEFPgeHSF3plTXxg7eUf6M=s96-c",
+                "badgeIds": [
+                    "1ad7d022-5089-485d-9282-9372d81edd0e"
+                ]
+            },
+            {
+                "id": "3a5dce33-1cb2-4975-9c66-e69418beaf86",
+                "email": "youval.mejerowicz@nixs.com",
+                "firstName": "Youval",
+                "lastName": "Mejerowicz",
+                "picture": "https://lh3.googleusercontent.com/a/ACg8ocL77Yq89ByFwiMIeFk9_j4R9Rapa8VRw3ACQxJXc673iZpvZQ=s96-c",
+                "badgeIds": [
+                    "1ad7d022-5089-485d-9282-9372d81edd0e"
+                ]
+            },
+            {
+                "id": "91b1ec7e-73c6-4a07-ac22-cd2ff8e265d2",
+                "email": "illia.bilyk@nixs.com",
+                "firstName": "Illia",
+                "lastName": "Bilyk",
+                "picture": "https://lh3.googleusercontent.com/a/ACg8ocJVuWO2M_ebEyxxeZVYZ6tu-HksDVjygEWHaoYzAbQ9Sz7lXokg=s96-c",
+                "badgeIds": [
+                    "1ad7d022-5089-485d-9282-9372d81edd0e"
+                ]
+            }
+        ]
+    },
+    {
+        "id": "7ee5d600-d0b8-459c-a770-a86d1ec23be6",
+        "name": "Very Strange Code",
+        "members": [
+            {
+                "id": "84d2ac0c-9a4d-4099-917a-f60afe0e7390",
+                "email": "maksym.derenskyi@nixs.com",
+                "firstName": "Maksym",
+                "lastName": "Derenskyi",
+                "picture": "https://lh3.googleusercontent.com/a/ACg8ocJDkoioOBfHpzV-NrXlzq4tfTK4zqKJswpzJ4pyq_5n23rWmDo=s96-c",
+                "badgeIds": [
+                    "563beb46-d329-4f8e-84eb-997bbca37b45",
+                    "40b6fbfc-f712-4be0-a8c1-f065434e090c",
+                    "4f17a7c4-984a-48c6-8df4-6c157800bc30"
+                ]
+            },
+            {
+                "id": "2dddcb39-97da-4306-92e9-8f845c069604",
+                "email": "gleb.sova@nixs.com",
+                "firstName": "Gleb",
+                "lastName": "Sova",
+                "picture": "https://lh3.googleusercontent.com/a/ACg8ocL0vV6uimMkt-USvnRmI2481uDoMZ0mKbh6hpVL7smiNyElk78=s96-c",
+                "badgeIds": [
+                    "f2e8e744-e961-4c26-9adc-07ba12bb19e1",
+                    "563beb46-d329-4f8e-84eb-997bbca37b45",
+                    "40b6fbfc-f712-4be0-a8c1-f065434e090c"
+                ]
+            },
+            {
+                "id": "875ed4c1-4a5f-4d5b-a0eb-9d1ff140dbdb",
+                "email": "yevhen.filonenko@nixs.com",
+                "firstName": "Yevhen",
+                "lastName": "Filonenko",
+                "picture": "https://lh3.googleusercontent.com/a/ACg8ocJ0KlZtxGG4qQjvCYkE45Az1jq98xCD8CZdNvD3y_GJF1I6dYYy=s96-c",
+                "badgeIds": [
+                    "40b6fbfc-f712-4be0-a8c1-f065434e090c",
+                    "563beb46-d329-4f8e-84eb-997bbca37b45",
+                    "4f17a7c4-984a-48c6-8df4-6c157800bc30"
+                ]
+            },
+            {
+                "id": "e93c7b1e-10f8-48ed-a65c-54fc752f2ddf",
+                "email": "maksym.bihunov@nixs.com",
+                "firstName": "Maksym",
+                "lastName": "Bihunov",
+                "picture": "https://lh3.googleusercontent.com/a/ACg8ocJkYwcu1wOdN_iHlOa8aAiwSF4I4UPa1F6RYW9cZwgI2rgFFe6w=s96-c",
+                "badgeIds": [
+                    "40b6fbfc-f712-4be0-a8c1-f065434e090c",
+                    "563beb46-d329-4f8e-84eb-997bbca37b45"
+                ]
+            }
+        ]
+    },
+    {
+        "id": "038ef817-e7cf-450a-b11f-f7a651070050",
+        "name": "namanga",
+        "members": [
+            {
+                "id": "df709d12-49d0-45ea-81d1-b821bde590c3",
+                "email": "bill.otieno@nixs.com",
+                "firstName": "Bill Omole",
+                "lastName": "Otieno",
+                "picture": "https://lh3.googleusercontent.com/a/ACg8ocJAw6_tk5QlceY01o7OiZbHJYSFiHCqSPUxAukcarfJpYl3Mw=s96-c",
+                "badgeIds": []
+            },
+            {
+                "id": "de803927-d886-4c83-aea0-48f46ee6844e",
+                "email": "franklin.gitika@nixs.com",
+                "firstName": "Franklin",
+                "lastName": "Gitika",
+                "picture": "https://lh3.googleusercontent.com/a/ACg8ocLxYdoSc20B2k9uZN6wnviKS6z2LFDHAPGO43wxkZUuQHqnTO8=s96-c",
+                "badgeIds": []
+            }
+        ]
+    }
+]
